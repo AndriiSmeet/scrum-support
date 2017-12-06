@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColorBtn"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/title"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Scrum-support"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/describeTitle"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+
+            android:layout_centerHorizontal="true"
+            android:text="Connect to your scrum team"
+            android:textSize="17dp" />
+
+        <View
+            android:layout_width="230dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/describeTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/darker_gray" />
+
+        <EditText
+            android:id="@+id/editSessionName"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:hint="Session name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editSessionName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/editPassword"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:text="Scrum Master"
+
+            />
+
+
+        <Button
+            android:id="@+id/btnConnectSession"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_alignBaseline="@+id/btnCreateSession"
+            android:layout_alignBottom="@+id/btnCreateSession"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="2dp"
+            android:background="@color/bgColorBtn"
+            android:text="Connect"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
+
+        <Button
+            android:id="@+id/btnCreateSession"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/checkBox"
+            android:layout_marginTop="20dp"
+            android:background="@color/bgColorBtn"
+            android:layout_marginRight="2dp"
+            android:padding="5dp"
+            android:text="Create session"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
+
+        <TextView
+            android:id="@+id/error"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnCreateSession"
+
+            android:layout_centerHorizontal="true"
+            android:text=""
+
+            android:textSize="17dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
