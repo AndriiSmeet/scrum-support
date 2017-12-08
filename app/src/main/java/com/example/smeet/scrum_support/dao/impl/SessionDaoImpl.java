@@ -20,6 +20,13 @@ public class SessionDaoImpl implements SessionDao {
 
     @Override
     public List<Session> getAll() {
+        String selectAllSession = "SELECT * FROM session";
+        try{
+            PreparedStatement pr = Connect.getConnection().prepareStatement(selectAllSession);
+            return extractData(pr.executeQuery());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -37,7 +44,6 @@ public class SessionDaoImpl implements SessionDao {
                 session.setId(rs.getInt("id"));
                 session.setSessionName(rs.getString("session_name"));
                 return session;
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,7 +87,6 @@ public class SessionDaoImpl implements SessionDao {
         return null;
     }
 
-
     @Override
     public Integer delete(Integer id) {
         return null;
@@ -98,8 +103,6 @@ public class SessionDaoImpl implements SessionDao {
             } else {
                 return null;
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -150,7 +153,6 @@ public class SessionDaoImpl implements SessionDao {
     }
 
     public List<Session> extractData(ResultSet rs) {
-
         List<Session> sessions = new ArrayList<>();
         try {
             while(rs.next()) {
