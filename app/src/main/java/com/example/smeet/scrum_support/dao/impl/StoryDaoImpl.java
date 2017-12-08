@@ -1,10 +1,12 @@
 package com.example.smeet.scrum_support.dao.impl;
 
+import com.example.smeet.scrum_support.config.Connect;
 import com.example.smeet.scrum_support.dao.SessionDao;
 import com.example.smeet.scrum_support.dao.StoryDao;
 import com.example.smeet.scrum_support.dao.impl.sql.StorySql;
 import com.example.smeet.scrum_support.model.Story;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,21 +22,55 @@ public class StoryDaoImpl implements StoryDao {
 
     @Override
     public List<Story> getAll() {
+
+        String selectAllStory = "SELECT * FROM story";
+        try{
+            PreparedStatement pr = Connect.getConnection().prepareStatement(selectAllStory);
+            return extractData(pr.executeQuery());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public Story getById(Integer id) {
+        String selectStoryById = "SELECT * FROM story WHERE id =?";
+        try{
+            PreparedStatement pr = Connect.getConnection().prepareStatement(selectStoryById);
+            pr.setInt(1, id);
+            return extractData(pr.executeQuery()).get(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public Integer create(Story story) {
+        String createStory = "INSERT INTO story VALUES (?, ?, ?, ?, ?, ?)";
+        try{
+            PreparedStatement pr = Connect.getConnection().prepareStatement(createStory);
+            pr.setInt(1, story.getId());
+            pr.setString(2, story.getTitle());
+            pr.setInt(3, story.getSession().getId());
+            pr.setString(4, story.getDescribe());
+            pr.setString(5, story.getSaveDate().toString());
+            pr.setBoolean(6, story.getActive());
+
+            ResultSet rs = pr.getGeneratedKeys();
+            if (rs.next()){
+                return rs.getInt(1);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public Integer delete(Integer id) {
+        //TODO write method delete Story
         return null;
     }
 
@@ -59,5 +95,4 @@ public class StoryDaoImpl implements StoryDao {
         }
         return null;
     }
-
 }
