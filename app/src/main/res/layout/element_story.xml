@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <RelativeLayout
+        android:paddingLeft="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_marginLeft="8dp"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="#5580a5"/>
+
+            <View
+        android:id="@+id/imageView2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/rec"
+        />
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_main"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/session" />
+
+                <TextView
+                    android:paddingLeft="3dp"
+                    android:id="@+id/textTimeFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name session"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_toRightOf="@+id/linearLayout">
+
+                <ImageView
+                    android:id="@+id/icon2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/calendar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingLeft="3dp"
+                    android:text="Day session"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_below="@+id/linearLayout"
+                android:id="@+id/myText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/show" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
