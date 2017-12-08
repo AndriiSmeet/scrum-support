@@ -2,11 +2,13 @@ package com.example.smeet.scrum_support.dao.impl;
 
 import com.example.smeet.scrum_support.config.Connect;
 import com.example.smeet.scrum_support.dao.SessionDao;
+import com.example.smeet.scrum_support.dao.impl.sql.SessionSql;
 import com.example.smeet.scrum_support.model.Session;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
  * Created by Smeet on 02.12.2017.
  */
 
-public class SessionDaoImpl implements SessionDao<Session> {
+public class SessionDaoImpl implements SessionDao {
 
     @Override
     public List<Session> getAll() {
@@ -44,20 +46,24 @@ public class SessionDaoImpl implements SessionDao<Session> {
     }
 
     @Override
-    public Boolean createSession(String name, String password) {
+    public Integer create(Session session) {
         String createSessionSql = "INSERT INTO session(session_name, password, is_ready) VALUES(?, ?, ?) ";
-        PreparedStatement ps = null;
         try {
-            ps = Connect.getConnection().prepareStatement(createSessionSql);ps.setString(1, name);
-            ps.setString(2, password);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(createSessionSql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, session.getSessionName());
+            ps.setString(2, session.getPassword());
             ps.setBoolean(3, false);
-            ps.execute();
-            return true;
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     @Override
@@ -72,6 +78,12 @@ public class SessionDaoImpl implements SessionDao<Session> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+
+    @Override
+    public Integer delete(Integer id) {
         return null;
     }
 
@@ -95,10 +107,6 @@ public class SessionDaoImpl implements SessionDao<Session> {
     }
 
 
-    @Override
-    public void update(Session session) {
-
-    }
 
     @Override
     public void startStatus(Integer id) {
@@ -147,9 +155,10 @@ public class SessionDaoImpl implements SessionDao<Session> {
         try {
             while(rs.next()) {
                 Session session = new Session();
-                session.setId(rs.getInt("id"));
-                session.setSessionName(rs.getString("session_name"));
-                session.setReady(rs.getBoolean("is_ready"));
+                session.setId(rs.getInt(SessionSql.PARAM_SESSION_ID));
+                session.setSessionName(SessionSql.PARAM_SESSION_NAME);
+                session.setPassword(SessionSql.PARAM_SESSION_PASSWORD);
+                session.setReady(rs.getBoolean(SessionSql.PARAM_SESSION_IS_READY));
 
                 sessions.add(session);
             }

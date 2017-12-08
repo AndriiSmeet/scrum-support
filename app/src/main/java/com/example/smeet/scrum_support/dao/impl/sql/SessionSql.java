@@ -8,6 +8,7 @@ public final class SessionSql {
 
     public static final String PARAM_SESSION_ID = "id";
     public static final String PARAM_SESSION_NAME = "session_name";
+    public static final String PARAM_SESSION_PASSWORD = "password";
     public static final String PARAM_SESSION_IS_READY = "is_ready";
 
 //    public static final String

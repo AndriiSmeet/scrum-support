@@ -67,19 +67,18 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_session);
 
         initElements();
-        buttonLogic();
-        doAutoRefresh();
+//        buttonLogic();
     }
-    private void doAutoRefresh() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                actualNumber = numberDao.getAllOnSession(sessionId);
-                setStatistics();
-                doAutoRefresh();
-            }
-        }, 2000);
-    }
+//    private void doAutoRefresh() {
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                actualNumber = numberDao.getAllOnSession(sessionId);
+//                setStatistics();
+//                doAutoRefresh();
+//            }
+//        }, 2000);
+//    }
 
     private void initElements() {
         number1 = (Button) findViewById(R.id.num1);
@@ -122,32 +121,10 @@ public class UserActivity extends AppCompatActivity {
         countHolders.add(txtCount8);
         countHolders.add(txtCount13);
 
-        handler = new Handler();
+//        handler = new Handler();
         numId = null;
         sessionId = getIntent().getIntExtra("sessionId", 1);
         numberDao = new NumberDaoImpl();
-    }
-
-    private boolean checkSessionOnReady() {
-        String selectSessionSQL = "SELECT * FROM session WHERE id = ?";
-        try {
-            PreparedStatement ps = Connect.getConnection().prepareStatement(selectSessionSQL);
-            ps.setInt(1, sessionId);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
-                Session session = new Session();
-                session.setId(rs.getInt("id"));
-                session.setSessionName(rs.getString("session_name"));
-                session.setReady(rs.getBoolean("is_ready"));
-
-                if(session.getReady()) {
-                    return true;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
     private void setStatistics() {
@@ -227,86 +204,86 @@ public class UserActivity extends AppCompatActivity {
         }
     }
 
-    private void buttonLogic() {
-        number1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkSessionOnReady()) {
-                    saveNumber(Integer.parseInt(number1.getText().toString()));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        number2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(checkSessionOnReady()) {
-                    saveNumber(Integer.parseInt(number2.getText().toString()));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-        });
-
-        number3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(checkSessionOnReady()) {
-                    saveNumber(Integer.parseInt(number3.getText().toString()));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-        });
-
-        number5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkSessionOnReady()) {
-                    saveNumber(Integer.parseInt(number5.getText().toString()));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-        });
-
-        number8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(checkSessionOnReady()) {
-                    saveNumber(Integer.parseInt(number8.getText().toString()));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-        });
-
-        number12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(checkSessionOnReady()) {
-                    saveNumber(Integer.parseInt(number12.getText().toString()));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-    }
+//    private void buttonLogic() {
+//        number1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(checkSessionOnReady()) {
+//                    saveNumber(Integer.parseInt(number1.getText().toString()));
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//
+//        number2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(checkSessionOnReady()) {
+//                    saveNumber(Integer.parseInt(number2.getText().toString()));
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//            }
+//        });
+//
+//        number3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(checkSessionOnReady()) {
+//                    saveNumber(Integer.parseInt(number3.getText().toString()));
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//            }
+//        });
+//
+//        number5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(checkSessionOnReady()) {
+//                    saveNumber(Integer.parseInt(number5.getText().toString()));
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//            }
+//        });
+//
+//        number8.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(checkSessionOnReady()) {
+//                    saveNumber(Integer.parseInt(number8.getText().toString()));
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//            }
+//        });
+//
+//        number12.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(checkSessionOnReady()) {
+//                    saveNumber(Integer.parseInt(number12.getText().toString()));
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Session not start yet", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//        });
+//    }
 
     @Override
     public void onBackPressed() {

@@ -8,14 +8,14 @@ public class Number {
 
     private Integer id;
     private Integer value;
-    private Session session;
+    private Story story;
 
     public Number(){}
 
-    public Number(Integer id, Integer value, Session session) {
+    public Number(Integer id, Integer value, Story story) {
         this.id = id;
         this.value = value;
-        this.session = session;
+        this.story = story;
     }
 
     public Integer getId() {
@@ -34,11 +34,11 @@ public class Number {
         this.value = value;
     }
 
-    public Session getSession() {
-        return session;
+    public Story getStory() {
+        return story;
     }
 
-    public void setSession(Session session) {
-        this.session = session;
+    public void setStory(Story story) {
+        this.story = story;
     }
 }

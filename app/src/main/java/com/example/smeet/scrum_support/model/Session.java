@@ -7,14 +7,24 @@ package com.example.smeet.scrum_support.model;
 public class Session {
     private Integer id;
     private String sessionName;
+    private String password;
     private Boolean isReady;
 
     public Session() {}
 
-    public Session(Integer id, String sessionName, Boolean isReady) {
+    public Session(Integer id, String sessionName, String password, Boolean isReady) {
         this.id = id;
         this.sessionName = sessionName;
+        this.password = password;
         this.isReady = isReady;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getId() {

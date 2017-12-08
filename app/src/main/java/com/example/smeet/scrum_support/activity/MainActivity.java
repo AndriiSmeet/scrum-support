@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 
-import com.example.smeet.scrum_support.MasterFragment;
+import com.example.smeet.scrum_support.fragment.MasterFragment;
 import com.example.smeet.scrum_support.R;
 
 import java.util.ArrayList;

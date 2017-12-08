@@ -2,6 +2,8 @@ package com.example.smeet.scrum_support.dao.impl;
 
 import com.example.smeet.scrum_support.config.Connect;
 import com.example.smeet.scrum_support.dao.NumberDao;
+import com.example.smeet.scrum_support.dao.StoryDao;
+import com.example.smeet.scrum_support.dao.impl.sql.NumberSql;
 import com.example.smeet.scrum_support.model.Number;
 
 import java.sql.PreparedStatement;
@@ -15,9 +17,30 @@ import java.util.List;
  * Created by Smeet on 02.12.2017.
  */
 
-public class NumberDaoImpl implements NumberDao<Number> {
+public class NumberDaoImpl implements NumberDao {
 
-    private SessionDaoImpl sessionDao = new SessionDaoImpl();
+    private StoryDao storyDao = new StoryDaoImpl();
+
+    @Override
+    public List<Number> getAll() {
+        return null;
+    }
+
+    @Override
+    public Number getById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Integer create(Number number) {
+        return null;
+    }
+
+
+    @Override
+    public Integer delete(Integer id) {
+        return null;
+    }
 
     @Override
     public List<Number> getAllOnSession(Integer id) {
@@ -80,10 +103,9 @@ public class NumberDaoImpl implements NumberDao<Number> {
         try {
             while(rs.next()) {
                 Number number = new Number();
-
-                number.setId(rs.getInt("id"));
-                number.setSession(sessionDao.getById(rs.getInt("session_id_fk")));
-                number.setValue(rs.getInt("value"));
+                number.setId(rs.getInt(NumberSql.PARAM_NUMBER_ID));
+                number.setValue(rs.getInt(NumberSql.PARAM_NUMBER_VALUE));
+                number.setStory(storyDao.getById(rs.getInt(NumberSql.PARAM_NUMBER_STORY_ID)));
 
                 numbers.add(number);
             }
@@ -94,4 +116,5 @@ public class NumberDaoImpl implements NumberDao<Number> {
         }
         return null;
     }
+
 }

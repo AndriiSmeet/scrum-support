@@ -66,22 +66,10 @@ public class ScrumMasterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scrum_master);
 
         initObj();
-        doLogicButton();
-        checkSession();
-        doAutoRefresh();
+
     }
 
-    private void doAutoRefresh() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                actualNumber = numberDao.getAllOnSession(sessionId);
-                refreshVoted();
-                setStatistics();
-                doAutoRefresh();
-            }
-        }, 5000);
-    }
+
 
     @Override
     public void onBackPressed() {
@@ -89,35 +77,35 @@ public class ScrumMasterActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    private void doLogicButton() {
-        btnReady.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sessionDao.startStatus(sessionId);
-                checkSession();
-            }
-        });
-
-        btnEnd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sessionDao.closeStatus(sessionId);
-                checkSession();
-            }
-        });
-
-        btnResetSession.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sessionDao.resetSession(sessionId);
-                sessionDao.closeStatus(sessionId);
-                txtAvarage.setText("0");
-                checkSession();
-            }
-        });
-
-
-    }
+//    private void doLogicButton() {
+//        btnReady.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sessionDao.startStatus(sessionId);
+//                checkSession();
+//            }
+//        });
+//
+//        btnEnd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sessionDao.closeStatus(sessionId);
+//                checkSession();
+//            }
+//        });
+//
+//        btnResetSession.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sessionDao.resetSession(sessionId);
+//                sessionDao.closeStatus(sessionId);
+//                txtAvarage.setText("0");
+//                checkSession();
+//            }
+//        });
+//
+//
+//    }
 
     private void initObj() {
 
@@ -192,15 +180,15 @@ public class ScrumMasterActivity extends AppCompatActivity {
 
     }
 
-    private void checkSession() {
-        if(sessionDao.getById(sessionId).getReady()) {
-            textSessionStatus.setText("Session ready");
-            textSessionStatus.setTextColor(Color.GREEN);
-        } else {
-            textSessionStatus.setText("Session closed");
-            textSessionStatus.setTextColor(Color.RED);
-        }
-    }
+//    private void checkSession() {
+//        if(sessionDao.getById(sessionId).getReady()) {
+//            textSessionStatus.setText("Session ready");
+//            textSessionStatus.setTextColor(Color.GREEN);
+//        } else {
+//            textSessionStatus.setText("Session closed");
+//            textSessionStatus.setTextColor(Color.RED);
+//        }
+//    }
 
 
     private void setStatistics() {
