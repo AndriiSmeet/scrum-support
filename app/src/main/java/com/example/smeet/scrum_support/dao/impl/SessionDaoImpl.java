@@ -140,8 +140,8 @@ public class SessionDaoImpl implements SessionDao {
             while(rs.next()) {
                 Session session = new Session();
                 session.setId(rs.getInt(SessionSql.PARAM_SESSION_ID));
-                session.setSessionName(SessionSql.PARAM_SESSION_NAME);
-                session.setPassword(SessionSql.PARAM_SESSION_PASSWORD);
+                session.setSessionName(rs.getString(SessionSql.PARAM_SESSION_NAME));
+                session.setPassword(rs.getString(SessionSql.PARAM_SESSION_PASSWORD));
                 session.setReady(rs.getBoolean(SessionSql.PARAM_SESSION_IS_READY));
 
                 sessions.add(session);

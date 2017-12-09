@@ -3,8 +3,8 @@ package com.example.smeet.scrum_support.service.impl;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.smeet.scrum_support.async.AsyncConnectSession;
-import com.example.smeet.scrum_support.async.AsyncCreateSession;
+import com.example.smeet.scrum_support.async.session.AsyncConnectSession;
+import com.example.smeet.scrum_support.async.session.AsyncCreateSession;
 import com.example.smeet.scrum_support.dao.SessionDao;
 import com.example.smeet.scrum_support.dao.impl.SessionDaoImpl;
 import com.example.smeet.scrum_support.model.Session;

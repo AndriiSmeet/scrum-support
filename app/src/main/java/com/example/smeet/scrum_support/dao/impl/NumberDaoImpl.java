@@ -69,11 +69,11 @@ public class NumberDaoImpl implements NumberDao {
 
 
     @Override
-    public Integer update(Integer id, Integer value) {
+    public Integer update(Number number) {
             try {
                 PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.UPDATE_NUMBER_QUERY, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, value);
-                ps.setInt(2, id);
+                ps.setInt(1, number.getValue());
+                ps.setInt(2, number.getId());
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 if (rs.next()) {

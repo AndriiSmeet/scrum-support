@@ -1,6 +1,5 @@
 package com.example.smeet.scrum_support.activity;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,10 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnCreateSession;
     private Button btnConnectSession;
     private CheckBox isScrumMaster;
-    public ProgressDialog progressDialog;
 
     private SessionService sessionService;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

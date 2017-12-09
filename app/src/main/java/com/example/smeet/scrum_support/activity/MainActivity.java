@@ -10,8 +10,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 
-import com.example.smeet.scrum_support.fragment.MasterFragment;
+import com.example.smeet.scrum_support.fragment.MasterMainFragment;
 import com.example.smeet.scrum_support.R;
+import com.example.smeet.scrum_support.fragment.MasterStoriesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(new MasterFragment(), "MAIN");
-        pagerAdapter.addFragment(new MasterFragment(), "STORIES");
+        pagerAdapter.addFragment(new MasterMainFragment(), "MAIN");
+        pagerAdapter.addFragment(new MasterStoriesFragment(), "STORIES");
         viewPager.setAdapter(pagerAdapter);
     }
 

@@ -55,4 +55,16 @@ public class Session {
     public void setReady(Boolean ready) {
         isReady = ready;
     }
+
+    @Override
+    public String toString() {
+        return "" + getSessionName() + " - " + checkReady();
+    }
+
+    private String checkReady() {
+        if(isReady) {
+            return "active";
+        }
+        return "closed";
+    }
 }

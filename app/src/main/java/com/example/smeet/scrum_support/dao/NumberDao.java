@@ -11,6 +11,6 @@ import java.util.List;
 public interface NumberDao extends CrudDao<Number> {
 
     List<Number> getAllNumberOnStory(Integer id);
-    Integer update(Integer id, Integer value);
+    Integer update(Number number);
 
 }

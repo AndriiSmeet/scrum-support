@@ -50,10 +50,9 @@ public class UserActivity extends AppCompatActivity {
     private TextView txtCount13;
     private TextView txtAvarage;
 
-    private Integer sessionId;
-    private Integer numId;
-    private NumberDaoImpl numberDao;
-    private Integer avarage;
+    private Integer storyId;
+    private Integer numberId;
+
 
     private List<TextView> numberHolders;
     private List<TextView> countHolders;
@@ -122,9 +121,6 @@ public class UserActivity extends AppCompatActivity {
         countHolders.add(txtCount13);
 
 //        handler = new Handler();
-        numId = null;
-        sessionId = getIntent().getIntExtra("sessionId", 1);
-        numberDao = new NumberDaoImpl();
     }
 
     private void setStatistics() {
@@ -138,11 +134,6 @@ public class UserActivity extends AppCompatActivity {
             numberHolders.get(counter).setVisibility(View.VISIBLE);
             countHolders.get(counter).setVisibility(View.VISIBLE);
             counter++;
-        }
-        if(avarage != null) {
-            txtAvarage.setText(avarage.toString());
-        } else {
-            txtAvarage.setText("0");
         }
 
     }
@@ -184,9 +175,7 @@ public class UserActivity extends AppCompatActivity {
             summ += integer;
         }
 
-        if(summ != 0 && countAll != 0) {
-            avarage = summ/countAll;
-        }
+
 
 
         return numberAndCount;
