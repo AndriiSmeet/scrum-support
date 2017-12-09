@@ -11,15 +11,10 @@ import android.view.ViewGroup;
 import com.example.smeet.scrum_support.R;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MasterFragment extends Fragment {
 
 
-    public MasterFragment() {
-        // Required empty public constructor
-    }
+    public MasterFragment() {}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

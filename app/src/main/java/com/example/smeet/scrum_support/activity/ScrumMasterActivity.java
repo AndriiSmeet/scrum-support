@@ -180,16 +180,6 @@ public class ScrumMasterActivity extends AppCompatActivity {
 
     }
 
-//    private void checkSession() {
-//        if(sessionDao.getById(sessionId).getReady()) {
-//            textSessionStatus.setText("Session ready");
-//            textSessionStatus.setTextColor(Color.GREEN);
-//        } else {
-//            textSessionStatus.setText("Session closed");
-//            textSessionStatus.setTextColor(Color.RED);
-//        }
-//    }
-
 
     private void setStatistics() {
         HashMap<Integer, Integer> numbers = calculateCountOfNumber();

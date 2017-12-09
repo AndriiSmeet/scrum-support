@@ -193,16 +193,16 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
-    private void saveNumber(int value)  {
-
-        if(numId == null) {
-            numId = numberDao.create(value, sessionId);
-            Toast.makeText(getApplicationContext(), "You select " + value + ", your id " + numId, Toast.LENGTH_SHORT).show();
-        } else {
-            numberDao.update(numId, value);
-            Toast.makeText(getApplicationContext(), "You value was updated on " + value + ", your id " + numId, Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void saveNumber(int value)  {
+//
+//        if(numId == null) {
+//            numId = numberDao.create(value, sessionId);
+//            Toast.makeText(getApplicationContext(), "You select " + value + ", your id " + numId, Toast.LENGTH_SHORT).show();
+//        } else {
+//            numberDao.update(numId, value);
+//            Toast.makeText(getApplicationContext(), "You value was updated on " + value + ", your id " + numId, Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 //    private void buttonLogic() {
 //        number1.setOnClickListener(new View.OnClickListener() {

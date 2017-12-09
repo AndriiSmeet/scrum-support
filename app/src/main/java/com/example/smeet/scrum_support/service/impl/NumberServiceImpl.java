@@ -7,4 +7,5 @@ import com.example.smeet.scrum_support.service.NumberService;
  */
 
 public class NumberServiceImpl implements NumberService {
+
 }
