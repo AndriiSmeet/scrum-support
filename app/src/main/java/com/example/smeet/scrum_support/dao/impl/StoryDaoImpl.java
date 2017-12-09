@@ -22,10 +22,8 @@ public class StoryDaoImpl implements StoryDao {
 
     @Override
     public List<Story> getAll() {
-
-        String selectAllStory = "SELECT * FROM story";
         try{
-            PreparedStatement pr = Connect.getConnection().prepareStatement(selectAllStory);
+            PreparedStatement pr = Connect.getConnection().prepareStatement(StorySql.SELECT_ALL_STORY);
             return extractData(pr.executeQuery());
         }catch (Exception e){
             e.printStackTrace();
@@ -35,9 +33,8 @@ public class StoryDaoImpl implements StoryDao {
 
     @Override
     public Story getById(Integer id) {
-        String selectStoryById = "SELECT * FROM story WHERE id =?";
         try{
-            PreparedStatement pr = Connect.getConnection().prepareStatement(selectStoryById);
+            PreparedStatement pr = Connect.getConnection().prepareStatement(StorySql.SELECT_STORY_BY_ID);
             pr.setInt(1, id);
             return extractData(pr.executeQuery()).get(0);
         }catch (Exception e){
@@ -48,9 +45,8 @@ public class StoryDaoImpl implements StoryDao {
 
     @Override
     public Integer create(Story story) {
-        String createStory = "INSERT INTO story VALUES (?, ?, ?, ?, ?, ?)";
         try{
-            PreparedStatement pr = Connect.getConnection().prepareStatement(createStory);
+            PreparedStatement pr = Connect.getConnection().prepareStatement(StorySql.CREATE_STORY);
             pr.setInt(1, story.getId());
             pr.setString(2, story.getTitle());
             pr.setInt(3, story.getSession().getId());
@@ -71,6 +67,31 @@ public class StoryDaoImpl implements StoryDao {
     @Override
     public Integer delete(Integer id) {
         //TODO write method delete Story
+        return null;
+    }
+
+    @Override
+    public List<Story> getAllStoryByIdSession(Integer idSession) {
+        try{
+            PreparedStatement pr = Connect.getConnection().prepareStatement(StorySql.SELECT_ALL_STORY_BY_ID_SESSION);
+            pr.setInt(1, idSession);
+            return extractData(pr.executeQuery());
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Story> getAllStoryByIsActive(boolean arg) {
+        try{
+            PreparedStatement pr = Connect.getConnection().prepareStatement(StorySql.SELECT_ALL_STORY_BY_TRUE_OR_FALSE);
+            pr.setBoolean(1, arg);
+            return extractData(pr.executeQuery());
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        //TODO
         return null;
     }
 
