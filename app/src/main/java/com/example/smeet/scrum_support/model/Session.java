@@ -19,6 +19,11 @@ public class Session {
         this.isReady = isReady;
     }
 
+    public Session(String sessionName, String password) {
+        this.sessionName = sessionName;
+        this.password = password;
+    }
+
     public String getPassword() {
         return password;
     }

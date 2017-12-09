@@ -20,9 +20,9 @@ public class SessionDaoImpl implements SessionDao {
 
     @Override
     public List<Session> getAll() {
-        String selectAllSession = "SELECT * FROM session";
+
         try{
-            PreparedStatement pr = Connect.getConnection().prepareStatement(selectAllSession);
+            PreparedStatement pr = Connect.getConnection().prepareStatement(SessionSql.GET_ALL_SESSION_QUERY);
             return extractData(pr.executeQuery());
         }catch (Exception e){
             e.printStackTrace();
@@ -31,18 +31,17 @@ public class SessionDaoImpl implements SessionDao {
     }
 
     @Override
-    public Session connectSession(String name, String password) {
-        String connectToSessionSql = "SELECT * FROM session WHERE session_name = ? AND password = ?";
-        PreparedStatement ps = null;
+    public Session connect(String name, String password) {
+
         try {
-            ps = Connect.getConnection().prepareStatement(connectToSessionSql);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(SessionSql.CONNECT_SESSION_QUERY);
             ps.setString(1, name);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Session session = new Session();
-                session.setId(rs.getInt("id"));
-                session.setSessionName(rs.getString("session_name"));
+                session.setId(rs.getInt(SessionSql.PARAM_SESSION_ID));
+                session.setSessionName(rs.getString(SessionSql.PARAM_SESSION_NAME));
                 return session;
             }
         } catch (SQLException e) {
@@ -53,9 +52,9 @@ public class SessionDaoImpl implements SessionDao {
 
     @Override
     public Integer create(Session session) {
-        String createSessionSql = "INSERT INTO session(session_name, password, is_ready) VALUES(?, ?, ?) ";
+
         try {
-            PreparedStatement ps = Connect.getConnection().prepareStatement(createSessionSql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(SessionSql.CREATE_SESSION_QUERY, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, session.getSessionName());
             ps.setString(2, session.getPassword());
             ps.setBoolean(3, false);
@@ -63,7 +62,6 @@ public class SessionDaoImpl implements SessionDao {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 return rs.getInt(1);
-
             }
 
         } catch (SQLException e) {
@@ -75,9 +73,8 @@ public class SessionDaoImpl implements SessionDao {
     @Override
     public Session getById(Integer id) {
 
-        String selectSessionSQL = "SELECT * FROM session WHERE id = ?";
         try {
-            PreparedStatement ps = Connect.getConnection().prepareStatement(selectSessionSQL);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(SessionSql.GET_SESSION_BY_ID_QUERY);
             ps.setInt(1, id);
             return extractData(ps.executeQuery()).get(0);
 
@@ -94,9 +91,9 @@ public class SessionDaoImpl implements SessionDao {
 
     @Override
     public Session getByName(String name) {
-        String selectSessionSQL = "SELECT * FROM session WHERE session_name = ?";
+
         try {
-            PreparedStatement ps = Connect.getConnection().prepareStatement(selectSessionSQL);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(SessionSql.GET_SESSION_BY_NAME_QUERY);
             ps.setString(1, name);
             if(!extractData(ps.executeQuery()).isEmpty()) {
                 return extractData(ps.executeQuery()).get(0);
@@ -113,10 +110,9 @@ public class SessionDaoImpl implements SessionDao {
 
     @Override
     public void startStatus(Integer id) {
-        String endSessionSQL = "UPDATE session SET is_ready = ? WHERE id = ?";
-        PreparedStatement ps = null;
+
         try {
-            ps = Connect.getConnection().prepareStatement(endSessionSQL);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(SessionSql.UPDATE_SESSION_STATUS_QUERY);
             ps.setBoolean(1, true);
             ps.setInt(2, id);
             ps.execute();
@@ -127,25 +123,11 @@ public class SessionDaoImpl implements SessionDao {
 
     @Override
     public void closeStatus(Integer id) {
-        String endSessionSQL = "UPDATE session SET is_ready = ? WHERE id = ?";
-        PreparedStatement ps = null;
+
         try {
-            ps = Connect.getConnection().prepareStatement(endSessionSQL);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(SessionSql.UPDATE_SESSION_STATUS_QUERY);
             ps.setBoolean(1, false);
             ps.setInt(2, id);
-            ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void resetSession(Integer id) {
-        String resetSessionSQL = "DELETE FROM number WHERE session_id_fk = ?";
-        PreparedStatement ps = null;
-        try {
-            ps = Connect.getConnection().prepareStatement(resetSessionSQL);
-            ps.setInt(1, id);
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();

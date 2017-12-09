@@ -62,7 +62,7 @@ public class StoryDaoImpl implements StoryDao {
             if (rs.next()){
                 return rs.getInt(1);
             }
-        }catch(Exception e){
+        }catch(Exception e) {
             e.printStackTrace();
         }
         return null;
