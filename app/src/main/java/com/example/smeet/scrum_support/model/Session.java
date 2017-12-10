@@ -19,6 +19,11 @@ public class Session {
         this.isReady = isReady;
     }
 
+    public Session(String sessionName, String password) {
+        this.sessionName = sessionName;
+        this.password = password;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -49,5 +54,17 @@ public class Session {
 
     public void setReady(Boolean ready) {
         isReady = ready;
+    }
+
+    @Override
+    public String toString() {
+        return "" + getSessionName() + " - " + checkReady();
+    }
+
+    private String checkReady() {
+        if(isReady) {
+            return "active";
+        }
+        return "closed";
     }
 }

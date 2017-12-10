@@ -33,9 +33,21 @@ public class NumberDaoImpl implements NumberDao {
 
     @Override
     public Integer create(Number number) {
+        try {
+            PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.CREATE_NUMBER_QUERY, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, number.getValue());
+            ps.setInt(2, number.getStory().getId());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
-    }
 
+    }
 
     @Override
     public Integer delete(Integer id) {
@@ -43,14 +55,9 @@ public class NumberDaoImpl implements NumberDao {
     }
 
     @Override
-    public List<Number> getAllOnSession(Integer id) {
-        String getAllOnSessionSQL = "SELECT * \n" +
-                "FROM number n\n" +
-                "INNER JOIN session s\n" +
-                "ON n.session_id_fk = s.id\n" +
-                "WHERE s.id = ?;";
+    public List<Number> getAllNumberOnStory(Integer id) {
         try {
-            PreparedStatement ps = Connect.getConnection().prepareStatement(getAllOnSessionSQL);
+            PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.GET_ALL_NUM_ON_SESSION_QUERY);
             ps.setInt(1, id);
             return extractData(ps.executeQuery());
         } catch (SQLException e) {
@@ -59,32 +66,14 @@ public class NumberDaoImpl implements NumberDao {
         return null;
     }
 
-    @Override
-    public Integer create(Integer value, Integer sessionId) {
-        String createNumSql = "INSERT INTO number(value, session_id_fk) VALUES(?, ?) ";
-        try {
-            PreparedStatement ps = Connect.getConnection().prepareStatement(createNumSql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, value);
-            ps.setInt(2, sessionId);
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                return rs.getInt(1);
 
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     @Override
-    public Integer update(Integer id, Integer value) {
-        String updateSQL = "UPDATE number SET value = ? WHERE id = ?";
+    public Integer update(Number number) {
             try {
-                PreparedStatement ps = Connect.getConnection().prepareStatement(updateSQL, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, value);
-                ps.setInt(2, id);
+                PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.UPDATE_NUMBER_QUERY, Statement.RETURN_GENERATED_KEYS);
+                ps.setInt(1, number.getValue());
+                ps.setInt(2, number.getId());
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 if (rs.next()) {
