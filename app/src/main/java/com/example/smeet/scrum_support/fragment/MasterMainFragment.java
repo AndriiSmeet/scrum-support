@@ -61,7 +61,6 @@ public class MasterMainFragment extends Fragment {
     private void initResource() {
         btnCreateStory = getActivity().findViewById(R.id.btnReady);
         btnSaveStory = getActivity().findViewById(R.id.btnEnd);
-        storiesSpinner = getActivity().findViewById(R.id.storiesSpinner);
 
         sessionId = getActivity().getIntent().getExtras().getInt("sessionId");
 

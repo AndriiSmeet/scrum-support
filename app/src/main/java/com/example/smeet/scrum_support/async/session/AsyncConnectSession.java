@@ -55,7 +55,7 @@ public class AsyncConnectSession extends AsyncTask<Integer, Integer, Void> {
         if(session == null) {
             Toast.makeText(context, "Connection with this data do not exist", Toast.LENGTH_SHORT).show();
         } else {
-            Intent intent = new Intent(context, UserActivity.class);
+            Intent intent = new Intent(context, MainActivity.class);
             intent.putExtra("sessionName", session.getSessionName());
             intent.putExtra("sessionId", session.getId());
             context.startActivity(intent);
