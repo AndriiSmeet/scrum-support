@@ -23,9 +23,6 @@
         <activity
             android:name=".activity.UserActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.ScrumMasterActivity"
-            android:screenOrientation="portrait" />
         <activity android:name=".activity.MainActivity"></activity>
     </application>
 

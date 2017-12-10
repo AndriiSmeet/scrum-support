@@ -9,6 +9,7 @@ import com.example.smeet.scrum_support.model.Story;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,16 +47,16 @@ public class StoryDaoImpl implements StoryDao {
     @Override
     public Integer create(Story story) {
         try{
-            PreparedStatement pr = Connect.getConnection().prepareStatement(StorySql.CREATE_STORY);
-            pr.setInt(1, story.getId());
-            pr.setString(2, story.getTitle());
-            pr.setInt(3, story.getSession().getId());
-            pr.setString(4, story.getDescribe());
-            pr.setString(5, story.getSaveDate().toString());
-            pr.setBoolean(6, story.getActive());
+            PreparedStatement ps = Connect.getConnection().prepareStatement(StorySql.CREATE_STORY, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, story.getTitle());
+            ps.setString(2, story.getDescribe());
+            ps.setBoolean(3, story.getActive());
+            ps.setInt(4, story.getSession().getId());
+//            ps.setString(4, story.getSaveDate().toString());
 
-            ResultSet rs = pr.getGeneratedKeys();
-            if (rs.next()){
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
                 return rs.getInt(1);
             }
         }catch(Exception e) {

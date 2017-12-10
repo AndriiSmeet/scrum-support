@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
 import com.example.smeet.scrum_support.activity.MainActivity;
+import com.example.smeet.scrum_support.activity.UserActivity;
 import com.example.smeet.scrum_support.dao.SessionDao;
 import com.example.smeet.scrum_support.dao.impl.SessionDaoImpl;
 import com.example.smeet.scrum_support.model.Session;
@@ -54,7 +55,7 @@ public class AsyncConnectSession extends AsyncTask<Integer, Integer, Void> {
         if(session == null) {
             Toast.makeText(context, "Connection with this data do not exist", Toast.LENGTH_SHORT).show();
         } else {
-            Intent intent = new Intent(context, MainActivity.class);
+            Intent intent = new Intent(context, UserActivity.class);
             intent.putExtra("sessionName", session.getSessionName());
             intent.putExtra("sessionId", session.getId());
             context.startActivity(intent);

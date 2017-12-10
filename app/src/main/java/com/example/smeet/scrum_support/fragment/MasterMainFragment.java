@@ -25,7 +25,9 @@ import java.util.List;
 public class MasterMainFragment extends Fragment {
 
     private SessionDao sessionDao = new SessionDaoImpl();
+    private StoryDao storyDao = new StoryDaoImpl();
 
+    private Integer sessionId;
     private Button btnCreateStory;
     private Button btnSaveStory;
     private Spinner storiesSpinner;
@@ -60,13 +62,16 @@ public class MasterMainFragment extends Fragment {
         btnCreateStory = getActivity().findViewById(R.id.btnReady);
         btnSaveStory = getActivity().findViewById(R.id.btnEnd);
         storiesSpinner = getActivity().findViewById(R.id.storiesSpinner);
+
+        sessionId = getActivity().getIntent().getExtras().getInt("sessionId");
+
     }
 
     private void doButtonLogic() {
         btnCreateStory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                storyDao.create(new Story("MyStory", sessionDao.getById(sessionId), "describe", true));
             }
         });
 

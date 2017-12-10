@@ -26,6 +26,13 @@ public class Story {
         this.isActive = isActive;
     }
 
+    public Story(String title, Session session, String describe, Boolean isActive) {
+        this.title = title;
+        this.session = session;
+        this.describe = describe;
+        this.isActive = isActive;
+    }
+
     public Integer getId() {
         return id;
     }
