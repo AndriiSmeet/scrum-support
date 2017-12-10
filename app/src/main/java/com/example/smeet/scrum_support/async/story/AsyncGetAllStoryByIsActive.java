@@ -54,6 +54,7 @@ public class AsyncGetAllStoryByIsActive extends AsyncTask<Integer, Integer, Void
         } else {
             if(isActive == true){
                 storyService.showDialogWithActiveStories(stories);
+
             } else {
                 Toast.makeText(context, "Are not active stories lenght: " + stories.size(), Toast.LENGTH_SHORT).show();
             }

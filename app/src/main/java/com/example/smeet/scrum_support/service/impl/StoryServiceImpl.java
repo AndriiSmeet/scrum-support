@@ -6,6 +6,7 @@ import android.view.Window;
 import android.widget.ListView;
 
 import com.example.smeet.scrum_support.R;
+import com.example.smeet.scrum_support.adapter.AdapterStoriesBySession;
 import com.example.smeet.scrum_support.adapter.UserActiveStories;
 import com.example.smeet.scrum_support.async.story.AsyncCreateStory;
 import com.example.smeet.scrum_support.async.story.AsyncGetAllStoryByIdSession;
@@ -62,6 +63,14 @@ public class StoryServiceImpl implements StoryService {
         return null;
     }
 
+    @Override
+    public void showStorieBySession(List<Story> stories){
+        AdapterStoriesBySession adapter = new AdapterStoriesBySession(context, new ArrayList<Story>(stories), R.id.listStory);
+        ListView lv = adapter.getListView();
+        lv.setAdapter(adapter);
+    }
+
+    @Override
     public void showDialogWithActiveStories(List<Story> stories) {
 
         Dialog dialog = new Dialog(context);
