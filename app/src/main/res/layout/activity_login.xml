@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/scrumfon"
+    android:background="#5580a5"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -19,9 +19,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/describeTitle"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/describeTitle"
             android:src="@drawable/scrum" />
 
         <TextView
@@ -68,31 +66,31 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
-        <RelativeLayout
-            android:id="@+id/linearLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/editPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+<LinearLayout
+    android:id="@+id/linearLayout"
+    android:layout_below="@+id/editPassword"
+    android:layout_centerHorizontal="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:textColor="@android:color/black"
-                android:text="Scrum Master"
-                android:textSize="17dp" />
+    <CheckBox
 
-            <Switch
-                android:id="@+id/switchs"
-                android:layout_below="@+id/textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true" />
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scrum Master"
+        android:textColor="@android:color/black"
+        android:textSize="17dp" />
+
+
+
+</LinearLayout>
+
 
 
         <Button
@@ -132,6 +130,8 @@
             android:text=""
             android:textColor="@android:color/black"
             android:textSize="17dp" />
+
+
 
 
     </RelativeLayout>
