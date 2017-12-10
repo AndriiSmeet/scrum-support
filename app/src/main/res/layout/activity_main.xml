@@ -1,90 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgColorBtn"
+    android:background="@drawable/scrumfon"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <RelativeLayout
-        android:layout_width="300dp"
-        android:layout_height="350dp"
-        android:background="@android:color/white"
-        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:background="#90ffffff"
+        android:gravity="center">
 
-        <TextView
+        <ImageView
             android:id="@+id/title"
-            android:textColor="@android:color/black"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="Scrum-support"
-            android:textSize="25dp" />
+            android:layout_alignLeft="@+id/describeTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/describeTitle"
+            android:src="@drawable/scrum" />
 
         <TextView
             android:id="@+id/describeTitle"
-            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
-
             android:layout_centerHorizontal="true"
             android:text="Connect to your scrum team"
-            android:textSize="17dp" />
+            android:textColor="@android:color/black"
+            android:textSize="25dp" />
 
         <View
+            android:id="@+id/vieww"
             android:layout_width="230dp"
             android:layout_height="2dp"
             android:layout_below="@+id/describeTitle"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:background="@android:color/darker_gray" />
+            android:background="@android:color/black" />
 
         <EditText
+
             android:id="@+id/editSessionName"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_alignLeft="@+id/editPassword"
+            android:layout_alignStart="@+id/editPassword"
+            android:layout_below="@+id/vieww"
+            android:drawableLeft="@drawable/sessions"
+            android:drawablePadding="10dp"
             android:hint="Session name"
             android:inputType="textPersonName" />
 
         <EditText
+            android:drawableLeft="@drawable/openlock"
             android:id="@+id/editPassword"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editSessionName"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
             android:hint="Password"
             android:inputType="textPassword" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:id="@+id/linearLayout"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/editPassword"
-            android:layout_marginTop="10dp"
-            android:textSize="17dp"
-            android:text="Scrum Master"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            />
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:text="Scrum Master"
+                android:textSize="17dp" />
+
+            <Switch
+                android:id="@+id/switchs"
+                android:layout_below="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
 
 
         <Button
             android:id="@+id/btnConnectSession"
             android:layout_width="120dp"
             android:layout_height="50dp"
-            android:layout_alignBaseline="@+id/btnCreateSession"
-            android:layout_alignBottom="@+id/btnCreateSession"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="2dp"
-            android:background="@color/bgColorBtn"
+            android:layout_above="@+id/error"
+            android:background="@drawable/buttonlogin"
+            android:layout_marginLeft="25dp"
             android:text="Connect"
             android:textColor="@android:color/white"
             android:textSize="14dp" />
@@ -96,10 +113,10 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/checkBox"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="20dp"
-            android:background="@color/bgColorBtn"
-            android:layout_marginRight="2dp"
+            android:background="@drawable/buttonlogin"
             android:padding="5dp"
             android:text="Create session"
             android:textColor="@android:color/white"
@@ -108,14 +125,12 @@
 
         <TextView
             android:id="@+id/error"
-            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnCreateSession"
-
             android:layout_centerHorizontal="true"
             android:text=""
-
+            android:textColor="@android:color/black"
             android:textSize="17dp" />
 
 
