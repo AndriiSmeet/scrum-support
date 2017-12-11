@@ -13,7 +13,7 @@ public interface StoryService {
     Integer create(Story story);
     List<Story> getAll();
     List<Story> getAllStoryByIdSession(Integer idSession);
-    List<Story> getAllStoryByIsActive(boolean arg);
+    List<Story> getAllStoryByIsActive(boolean arg, Integer sessionId);
     void showStorieBySession(List<Story> stories);
     void showDialogWithActiveStories(List<Story> stories);
 }

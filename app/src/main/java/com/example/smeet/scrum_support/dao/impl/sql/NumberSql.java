@@ -16,9 +16,7 @@ public final class NumberSql {
 
     public final static String GET_ALL_NUM_ON_SESSION_QUERY = "SELECT * " +
                             "FROM number n " +
-                            "INNER JOIN session s " +
-                            "ON n.session_id_fk = s.id " +
-                            "WHERE s.id = ?;";
+                            "WHERE story_id_fk = ?;";
 
     public final static String UPDATE_NUMBER_QUERY = "UPDATE number " +
             "SET value = ? " +

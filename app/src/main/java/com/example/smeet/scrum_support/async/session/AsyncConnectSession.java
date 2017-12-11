@@ -52,13 +52,14 @@ public class AsyncConnectSession extends AsyncTask<Integer, Integer, Void> {
     @Override
     protected void onPostExecute(Void s) {
 
-        if(session == null) {
-            Toast.makeText(context, "Connection with this data do not exist", Toast.LENGTH_SHORT).show();
-        } else {
-            Intent intent = new Intent(context, MainActivity.class);
+        if(session != null) {
+            Intent intent = new Intent(context, UserActivity.class);
             intent.putExtra("sessionName", session.getSessionName());
             intent.putExtra("sessionId", session.getId());
             context.startActivity(intent);
+        }
+        else {
+            Toast.makeText(context, "Session with that data does not exist", Toast.LENGTH_SHORT).show();
         }
 
         progressDialog.dismiss();

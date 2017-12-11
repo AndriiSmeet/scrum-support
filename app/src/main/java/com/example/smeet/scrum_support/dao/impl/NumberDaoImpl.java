@@ -58,6 +58,7 @@ public class NumberDaoImpl implements NumberDao {
     public List<Number> getAllNumberOnStory(Integer id) {
         try {
             PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.GET_ALL_NUM_ON_SESSION_QUERY);
+            System.out.println(id);
             ps.setInt(1, id);
             return extractData(ps.executeQuery());
         } catch (SQLException e) {

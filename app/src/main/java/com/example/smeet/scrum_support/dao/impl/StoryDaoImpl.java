@@ -84,10 +84,11 @@ public class StoryDaoImpl implements StoryDao {
     }
 
     @Override
-    public List<Story> getAllStoryByIsActive(boolean arg) {
+    public List<Story> getAllStoryByIsActive(boolean arg, Integer idSession) {
         try{
             PreparedStatement pr = Connect.getConnection().prepareStatement(StorySql.SELECT_ALL_STORY_BY_TRUE_OR_FALSE);
             pr.setBoolean(1, arg);
+            pr.setInt(2, idSession);
             return extractData(pr.executeQuery());
         }catch (Exception ex){
             ex.printStackTrace();

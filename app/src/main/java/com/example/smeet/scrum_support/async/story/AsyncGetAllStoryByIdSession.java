@@ -56,8 +56,8 @@ public class AsyncGetAllStoryByIdSession extends AsyncTask<Integer, Integer, Voi
         if(stories == null) {
             Toast.makeText(context, "Stories is null", Toast.LENGTH_SHORT).show();
         } else {
-            storyService.showStorieBySession(stories);
-            Toast.makeText(context, "Stories with Session " + idSession + " lenght: " + stories.size(), Toast.LENGTH_SHORT).show();
+            storyService.showDialogWithActiveStories(stories);
+//            Toast.makeText(context, "Stories with Session " + idSession + " lenght: " + stories.size(), Toast.LENGTH_SHORT).show();
         }
 
         progressDialog.dismiss();

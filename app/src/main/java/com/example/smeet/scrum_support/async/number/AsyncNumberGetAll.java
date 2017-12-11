@@ -8,6 +8,9 @@ import com.example.smeet.scrum_support.model.Number;
 import com.example.smeet.scrum_support.R;
 import com.example.smeet.scrum_support.dao.NumberDao;
 import com.example.smeet.scrum_support.dao.impl.NumberDaoImpl;
+import com.example.smeet.scrum_support.service.NumberService;
+import com.example.smeet.scrum_support.service.impl.NumberServiceImpl;
+import com.github.mikephil.charting.charts.BarChart;
 
 import java.util.List;
 
@@ -19,14 +22,18 @@ public class AsyncNumberGetAll extends AsyncTask<Integer, Integer, Void> {
 
     private Context context;
     private final NumberDao numberDao;
+    private final NumberServiceImpl numberService;
     private ProgressDialog progressDialog;
     private List<Number> numbers;
     private Integer storyId;
+    private BarChart barChart;
 
-    public AsyncNumberGetAll(Context context, Integer storyId) {
+    public AsyncNumberGetAll(Context context, Integer storyId, BarChart barChart) {
         this.context = context;
         this.storyId = storyId;
+        numberService = new NumberServiceImpl(context);
         numberDao = new NumberDaoImpl();
+        this.barChart = barChart;
 
     }
 
@@ -46,7 +53,7 @@ public class AsyncNumberGetAll extends AsyncTask<Integer, Integer, Void> {
 
     @Override
     protected void onPostExecute(Void s) {
-
+        numberService.showStats(numbers, barChart);
         progressDialog.dismiss();
         super.onPostExecute(s);
     }

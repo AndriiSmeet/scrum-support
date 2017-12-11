@@ -24,13 +24,15 @@ public class AsyncGetAllStoryByIsActive extends AsyncTask<Integer, Integer, Void
     private Context context;
     private Boolean isActive;
     private StoryDao storyDao;
+    private Integer sessionId;
     private StoryServiceImpl storyService;
     private ProgressDialog progressDialog;
 
-    public AsyncGetAllStoryByIsActive(Context context, Boolean isActive) {
+    public AsyncGetAllStoryByIsActive(Context context, Boolean isActive, Integer sessionId) {
         this.context = context;
         this.isActive = isActive;
         storyDao = new StoryDaoImpl();
+        this.sessionId = sessionId;
         storyService = new StoryServiceImpl(context);
     }
 
@@ -43,7 +45,7 @@ public class AsyncGetAllStoryByIsActive extends AsyncTask<Integer, Integer, Void
 
     @Override
     protected Void doInBackground(Integer... integers) {
-        stories = storyDao.getAllStoryByIsActive(isActive);
+        stories = storyDao.getAllStoryByIsActive(isActive, sessionId);
         return null;
     }
 

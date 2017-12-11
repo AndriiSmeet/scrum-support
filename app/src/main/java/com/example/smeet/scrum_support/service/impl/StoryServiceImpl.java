@@ -2,8 +2,11 @@ package com.example.smeet.scrum_support.service.impl;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
 import com.example.smeet.scrum_support.adapter.AdapterStoriesBySession;
@@ -57,27 +60,37 @@ public class StoryServiceImpl implements StoryService {
     }
 
     @Override
-    public List<Story> getAllStoryByIsActive(boolean arg) {
-        AsyncGetAllStoryByIsActive asyncTask = new AsyncGetAllStoryByIsActive(context, arg);
+    public List<Story> getAllStoryByIsActive(boolean arg, Integer sessionId) {
+        AsyncGetAllStoryByIsActive asyncTask = new AsyncGetAllStoryByIsActive(context, arg, sessionId);
         asyncTask.execute();
         return null;
     }
 
     @Override
     public void showStorieBySession(List<Story> stories){
+
         AdapterStoriesBySession adapter = new AdapterStoriesBySession(context, new ArrayList<Story>(stories), R.id.listStory);
         ListView lv = adapter.getListView();
         lv.setAdapter(adapter);
+
     }
 
     @Override
-    public void showDialogWithActiveStories(List<Story> stories) {
+    public void showDialogWithActiveStories(final List<Story> stories) {
 
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_stories_list);
 
         ListView lv = dialog.findViewById(R.id.lv);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Story story = stories.get(i);
+                getById(story.getId());
+            }
+        });
+
         UserActiveStories adapter = new UserActiveStories(context, new ArrayList<Story>(stories));
         lv.setAdapter(adapter);
 

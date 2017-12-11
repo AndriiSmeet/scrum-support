@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.smeet.scrum_support.R;
-import com.example.smeet.scrum_support.adapter.UserActiveStories;
 import com.example.smeet.scrum_support.service.StoryService;
 import com.example.smeet.scrum_support.service.impl.StoryServiceImpl;
 
@@ -16,6 +15,7 @@ public class UserActivity extends AppCompatActivity {
     private StoryService storyService;
     private Button btnSelectStory;
 
+    private Integer sessionId;
     private Toolbar toolbar;
 
     @Override
@@ -23,6 +23,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user);
 
+        sessionId = getIntent().getExtras().getInt("sessionId");
         initElements();
 
         setSupportActionBar(toolbar);
@@ -56,7 +57,7 @@ public class UserActivity extends AppCompatActivity {
         btnSelectStory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                storyService.getAllStoryByIsActive(true);
+                storyService.getAllStoryByIsActive(true, sessionId);
             }
         });
     }

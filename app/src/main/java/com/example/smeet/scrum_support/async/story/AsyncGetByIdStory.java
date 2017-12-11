@@ -45,7 +45,7 @@ public class AsyncGetByIdStory extends AsyncTask<Integer, Integer, Void> {
         if(story == null) {
             Toast.makeText(context, "Story is null", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "Story title: " + story.getTitle(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Story id: " + story.getId(), Toast.LENGTH_SHORT).show();
         }
         progressDialog.dismiss();
         super.onPostExecute(aVoid);

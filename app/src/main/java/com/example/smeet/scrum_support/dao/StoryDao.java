@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface StoryDao extends CrudDao<Story> {
     List<Story> getAllStoryByIdSession(Integer idSession);
-    List<Story> getAllStoryByIsActive(boolean arg);
+    List<Story> getAllStoryByIsActive(boolean arg, Integer sessionId);
 }
