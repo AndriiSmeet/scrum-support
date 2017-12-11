@@ -56,16 +56,14 @@ public class AdapterStoriesBySession extends BaseAdapter{
 
         Story story = (Story) getItem(i);
 
-        TextView tvSession = v.findViewById(R.id.tvSession);
+        TextView tvSession = v.findViewById(R.id.txtNameStory);
         tvSession.setText(story.getSession().getSessionName());
 
-        TextView tvDate = v.findViewById(R.id.tvDate);
+        TextView tvDate = v.findViewById(R.id.txtDate);
         tvDate.setText(story.getSaveDate().toString());
 
-        TextView tvTitle = v.findViewById(R.id.tvTitle);
-        tvTitle.setText(story.getTitle());
 
-        TextView tvDescr = v.findViewById(R.id.tvDescr);
+        TextView tvDescr = v.findViewById(R.id.txtDescription);
         tvDescr.setText(story.getDescribe());
 
         lv = v.findViewById(idListView);

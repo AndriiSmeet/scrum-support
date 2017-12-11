@@ -23,21 +23,23 @@
 
     </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_main"
             android:orientation="vertical"
             android:weightSum="3">
 
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -46,14 +48,15 @@
                         android:id="@+id/icon"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/session" />
+                        android:src="@drawable/script" />
 
                     <TextView
+                        android:textColorHint="@android:color/white"
                         android:paddingLeft="3dp"
-                        android:id="@+id/tvSession"
+                        android:id="@+id/txtNameStory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name session"
+                        android:text="Name story"
                         android:textColor="#ffffff"
                         android:textSize="18dp" />
 
@@ -71,56 +74,47 @@
                         android:src="@drawable/calendar" />
 
                     <TextView
-                        android:id="@+id/tvDate"
+                        android:id="@+id/txtDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:paddingLeft="3dp"
-                        android:text="Day session"
+                        android:text="Day story"
                         android:textColor="#ffffff"
                         android:textSize="18dp" />
 
                 </LinearLayout>
 
-
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/show" />
-
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#ffffff"
-                    android:textSize="18dp"
-                    android:text="Title"/>
-
-            </LinearLayout>
 
             <LinearLayout
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:id="@+id/tvDescr"
+                    android:id="@+id/txtDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#ffffff"
                     android:textSize="15dp"
-                    android:text="Title"/>
+                    android:text="Description"/>
 
             </LinearLayout>
 
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/textStoryStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
 
 
     </LinearLayout>
