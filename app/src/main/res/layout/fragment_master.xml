@@ -28,29 +28,25 @@
                     android:id="@+id/linearLayout"
                     android:layout_marginTop="10dp"
                     android:layout_width="100dp"
-                    android:layout_height="50dp"
+                    android:layout_height="80dp"
                     android:background="@color/bgColorBtn"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src = "@drawable/scrip_white"/>
 
                     <TextView
-                        android:id="@+id/textSessionStatus"
+                        android:id="@+id/txtTitle"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="2dp"
-                        android:text="Status"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:textSize="15dp" />
-
-                    <android.support.v7.widget.SwitchCompat
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:checked="false"
-                        android:textOff="OFF"
-                        android:textOn="ON" />
-
+                        android:textColor="@android:color/white"
+                        android:text="No story" />
 
                 </LinearLayout>
 
@@ -71,7 +67,7 @@
                         android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/people" />
+                        android:background="@drawable/teams" />
 
 
                     <TextView
@@ -80,6 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="0"
+                        android:textColor="@android:color/white"
                         android:textSize="30dp" />
 
 
@@ -108,11 +105,12 @@
                     android:gravity="center">
                     <Button
                         android:paddingLeft="5dp"
-                        android:drawableLeft="@drawable/save"
+                        android:textStyle="bold"
+                        android:drawableLeft = "@drawable/save"
                         android:id="@+id/btnSaveStory"
-                        android:layout_width="90dp"
-                        android:layout_height="wrap_content"
-                        android:background="#5580a5"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/button_master"
                         android:text="Save"
                         android:textColor="@android:color/white"
                         android:textSize="17dp">
@@ -138,11 +136,12 @@
                     <Button
                         android:paddingRight="5dp"
                         android:id="@+id/btnCreateStory"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:drawableRight="@drawable/adddocuments"
-                        android:background="#5580a5"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:drawableRight="@drawable/file"
+                        android:background="@drawable/button_master"
                         android:text="Create"
+                        android:textStyle="bold"
                         android:textColor="@android:color/white"
                         android:textSize="17dp" />
 
@@ -152,29 +151,80 @@
 
             </LinearLayout>
 
-            <Button
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/buttons"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/btnSelectStory"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:background="@color/bgColorBtn"
-                android:textColor="@android:color/white"
-                android:text="Select story"
-                />
+            <LinearLayout
 
-            <Button
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/btnSelectStory"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/btnRefresh"
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:background="@color/bgColorBtn"
-                android:textColor="@android:color/white"
-                android:text="Refresh"
-                />
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/buttons"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/btnSelectStory"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:textStyle="bold"
+                        android:background="@drawable/button_master"
+                        android:drawableLeft="@drawable/selection"
+                        android:text="Select story"
+                        android:textColor="@android:color/white" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white">
+
+                </View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+
+                    <Button
+                        android:id="@+id/btnRefresh"
+                        android:drawableRight="@drawable/reload"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:paddingLeft="5dp"
+                        android:background="@drawable/button_master"
+                        android:textColor="@android:color/white"
+                        android:text="Refresh"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttons">
+
+
+
+
+
+            </RelativeLayout>
+
 
 
             <LinearLayout
@@ -186,31 +236,39 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/boss" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_above="@+id/stat"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
                 <TextView
-                    android:id="@+id/txtTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="No story" />
+                    android:textSize="25dp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:text="Statistics"/>
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/stats"/>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/buttons">
-
-
-            </LinearLayout>
-
 
             <LinearLayout
+                android:id="@+id/stat"
                 android:layout_width="match_parent"
                 android:background="@color/bgColorBtn"
                 android:layout_height="250dp"
