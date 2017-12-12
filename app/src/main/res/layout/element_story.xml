@@ -51,11 +51,11 @@
                         android:id="@+id/icon"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/script" />
+                        android:src="@drawable/document" />
 
                     <TextView
                         android:textColorHint="@android:color/white"
-                        android:paddingLeft="3dp"
+                        android:paddingLeft="10dp"
                         android:id="@+id/txtTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,14 +74,14 @@
                         android:id="@+id/icon2"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/calendar" />
+                        android:src="@drawable/wall_calendar" />
 
                     <TextView
                         android:id="@+id/txtDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="end"
-                        android:paddingLeft="3dp"
+                        android:paddingLeft="10dp"
                         android:text="Day story"
                         android:textColor="#ffffff"
                         android:textSize="18dp" />
