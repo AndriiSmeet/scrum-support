@@ -9,14 +9,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:gravity="center"
         android:background="@color/bgDialog"
         >
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/ok"/>
     </LinearLayout>
 
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Session successfully created"
-            android:textColor="@color/bgDialog_1"
+            android:textColor="@android:color/white"
             android:textSize="18dp" />
 
 
