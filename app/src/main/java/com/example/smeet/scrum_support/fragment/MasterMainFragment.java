@@ -29,6 +29,8 @@ import com.example.smeet.scrum_support.service.impl.SessionServiceImpl;
 import com.example.smeet.scrum_support.service.impl.StoryServiceImpl;
 import com.github.mikephil.charting.charts.BarChart;
 
+import java.util.Date;
+
 
 public class MasterMainFragment extends Fragment {
 
@@ -114,7 +116,7 @@ public class MasterMainFragment extends Fragment {
                         String dialogDesc =((EditText)dialog.findViewById(R.id.editDialogDescription)).getText().toString();
 
 
-                        storyService.create(new Story(dialogTitle, sessionService.getById(sessionId), dialogDesc, true));
+                        storyService.create(new Story(dialogTitle, sessionService.getById(sessionId), dialogDesc, new Date(), true));
                         dialog.dismiss();
                     }
 

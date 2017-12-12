@@ -5,6 +5,7 @@ import com.example.smeet.scrum_support.dao.NumberDao;
 import com.example.smeet.scrum_support.dao.StoryDao;
 import com.example.smeet.scrum_support.dao.impl.sql.NumberSql;
 import com.example.smeet.scrum_support.model.Number;
+import com.example.smeet.scrum_support.model.Story;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,10 +34,15 @@ public class NumberDaoImpl implements NumberDao {
 
     @Override
     public Integer create(Number number) {
+        return null;
+    }
+
+    @Override
+    public Integer create(Integer value, Integer storyId) {
         try {
             PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.CREATE_NUMBER_QUERY, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, number.getValue());
-            ps.setInt(2, number.getStory().getId());
+            ps.setInt(1, value);
+            ps.setInt(2, storyId);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -68,13 +74,12 @@ public class NumberDaoImpl implements NumberDao {
     }
 
 
-
     @Override
-    public Integer update(Number number) {
+    public Integer update(Integer value, Integer storyId) {
             try {
                 PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.UPDATE_NUMBER_QUERY, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, number.getValue());
-                ps.setInt(2, number.getId());
+                ps.setInt(1, value);
+                ps.setInt(2, storyId);
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 if (rs.next()) {
