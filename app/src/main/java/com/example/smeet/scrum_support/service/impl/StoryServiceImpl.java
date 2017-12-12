@@ -15,6 +15,7 @@ import com.example.smeet.scrum_support.async.story.AsyncCreateStory;
 import com.example.smeet.scrum_support.async.story.AsyncGetAllStoryByIdSession;
 import com.example.smeet.scrum_support.async.story.AsyncGetAllStoryByIsActive;
 import com.example.smeet.scrum_support.async.story.AsyncGetByIdStory;
+import com.example.smeet.scrum_support.fragment.MasterMainFragment;
 import com.example.smeet.scrum_support.model.Story;
 import com.example.smeet.scrum_support.service.StoryService;
 
@@ -88,6 +89,7 @@ public class StoryServiceImpl implements StoryService {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Story story = stories.get(i);
                 getById(story.getId());
+
             }
         });
 

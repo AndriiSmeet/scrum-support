@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.example.smeet.scrum_support.R;
 import com.example.smeet.scrum_support.dao.StoryDao;
 import com.example.smeet.scrum_support.dao.impl.StoryDaoImpl;
+import com.example.smeet.scrum_support.fragment.MasterMainFragment;
 import com.example.smeet.scrum_support.model.Story;
 
 /**
@@ -45,7 +46,8 @@ public class AsyncGetByIdStory extends AsyncTask<Integer, Integer, Void> {
         if(story == null) {
             Toast.makeText(context, "Story is null", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "Story id: " + story.getId(), Toast.LENGTH_SHORT).show();
+            MasterMainFragment.storyId = story.getId();
+            Toast.makeText(context, "Story with id: " + story.getId() + " selected", Toast.LENGTH_SHORT).show();
         }
         progressDialog.dismiss();
         super.onPostExecute(aVoid);

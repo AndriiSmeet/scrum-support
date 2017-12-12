@@ -38,21 +38,17 @@
 
         <EditText
 
-            android:id="@+id/editTitle"
+            android:id="@+id/editDialogTitle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editPassword"
-            android:layout_alignStart="@+id/editPassword"
-            android:layout_below="@+id/vieww"
             android:drawablePadding="10dp"
             android:hint="Title"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editDescription"
+            android:id="@+id/editDialogDescription"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTitle"
             android:layout_marginTop="10dp"
             android:drawablePadding="10dp"
             android:hint="Description"

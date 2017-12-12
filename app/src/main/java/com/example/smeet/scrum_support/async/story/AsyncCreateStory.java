@@ -1,13 +1,17 @@
 package com.example.smeet.scrum_support.async.story;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
 import com.example.smeet.scrum_support.dao.StoryDao;
 import com.example.smeet.scrum_support.dao.impl.StoryDaoImpl;
+import com.example.smeet.scrum_support.fragment.MasterMainFragment;
 import com.example.smeet.scrum_support.model.Story;
 
 /**
@@ -16,11 +20,12 @@ import com.example.smeet.scrum_support.model.Story;
 
 public class AsyncCreateStory extends AsyncTask<Integer, Integer, Void> {
 
-    Story story;
-    Context context;
-    StoryDao storyDao;
-    Integer id;
-    ProgressDialog progressDialog;
+    private Story story;
+    private Context context;
+    private StoryDao storyDao;
+    private Integer id;
+    private ProgressDialog progressDialog;
+
 
     public AsyncCreateStory(Story story, Context context) {
         this.story = story;
@@ -46,10 +51,15 @@ public class AsyncCreateStory extends AsyncTask<Integer, Integer, Void> {
         if (id == null) {
             Toast.makeText(context, "Does not create story", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "Story successfully created", Toast.LENGTH_SHORT).show();
+            Dialog dialog = new Dialog(context);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_ok);
+            ((TextView)dialog.findViewById(R.id.txtDialogMessage)).setText("Story successfully created");
+            dialog.show();
         }
         progressDialog.dismiss();
         super.onPostExecute(aVoid);
     }
+
 }
 

@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.smeet.scrum_support.async.session.AsyncConnectSession;
 import com.example.smeet.scrum_support.async.session.AsyncCreateSession;
+import com.example.smeet.scrum_support.async.session.AsyncFindSessionById;
 import com.example.smeet.scrum_support.dao.SessionDao;
 import com.example.smeet.scrum_support.dao.impl.SessionDaoImpl;
 import com.example.smeet.scrum_support.model.Session;
@@ -21,6 +22,7 @@ public class SessionServiceImpl implements SessionService {
 
     private final SessionDao sessionDao = new SessionDaoImpl();
     private Context context;
+    private Session session;
 
 
     public SessionServiceImpl(Context context) {
@@ -63,7 +65,9 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public Session getById(Integer id) {
         return sessionDao.getById(id);
+
     }
+
 
     @Override
     public Session getByName(String name) {
