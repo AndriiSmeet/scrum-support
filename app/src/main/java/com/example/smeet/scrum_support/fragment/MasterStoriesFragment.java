@@ -7,13 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.smeet.scrum_support.R;
 import com.example.smeet.scrum_support.async.story.AsyncCreateStory;
+import com.example.smeet.scrum_support.service.StoryService;
+import com.example.smeet.scrum_support.service.impl.StoryServiceImpl;
 
 
 public class MasterStoriesFragment extends Fragment  {
 
+    public ListView listView;
+    public StoryService storyService;
 
     public MasterStoriesFragment() {}
 
@@ -29,6 +34,11 @@ public class MasterStoriesFragment extends Fragment  {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        listView = getActivity().findViewById(R.id.listStory);
+        storyService = new StoryServiceImpl(getContext());
+        storyService.getAllStoryByIdSession(1, listView);
+
 
 
         //Фрагмент должен содержать всю листу историй в данной сесии,

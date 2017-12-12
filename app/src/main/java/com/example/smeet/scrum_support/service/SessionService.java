@@ -1,5 +1,7 @@
 package com.example.smeet.scrum_support.service;
 
+import android.widget.CheckBox;
+
 import com.example.smeet.scrum_support.model.Session;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
 public interface SessionService {
 
     List<Session> getAll();
-    Session connect(String name, String password);
+    Session connect(String name, String password, CheckBox isScrumMaster);
     Integer create(Session session);
     Session getById(Integer id);
     Session getByName(String name);

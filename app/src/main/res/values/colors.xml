@@ -6,4 +6,8 @@
     <color name="bgColorBtn">#5580a3</color>
     <color name="bgGreenBtn">#33691e</color>
     <color name="bgRedBtn">#b71c1c</color>
+    <color name="bgDialog">#2dd07f</color>
+    <color name="bgDialog_1">#060000</color>
+    <color name="bgNo">#dc4a5c</color>
+    <color name="bgAttantion">#fcb700</color>
 </resources>

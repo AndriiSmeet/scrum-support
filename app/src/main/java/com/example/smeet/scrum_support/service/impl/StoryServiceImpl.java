@@ -53,8 +53,8 @@ public class StoryServiceImpl implements StoryService {
     }
 
     @Override
-    public List<Story> getAllStoryByIdSession(Integer idSession) {
-        AsyncGetAllStoryByIdSession asyncTask = new AsyncGetAllStoryByIdSession(context, idSession);
+    public List<Story> getAllStoryByIdSession(Integer idSession, ListView listView) {
+        AsyncGetAllStoryByIdSession asyncTask = new AsyncGetAllStoryByIdSession(context, idSession, listView);
         asyncTask.execute();
         return null;
     }

@@ -32,7 +32,6 @@ public class MasterMainFragment extends Fragment {
     private Integer storyId;
     private Button btnCreateStory;
     private Button btnSaveStory;
-    private Spinner storiesSpinner;
 
 
     public MasterMainFragment() {}

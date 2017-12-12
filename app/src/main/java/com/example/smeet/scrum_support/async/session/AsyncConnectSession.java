@@ -1,9 +1,13 @@
 package com.example.smeet.scrum_support.async.session;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.Window;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
@@ -25,12 +29,15 @@ public class AsyncConnectSession extends AsyncTask<Integer, Integer, Void> {
     private String password;
     private Session session;
     private ProgressDialog progressDialog;
+    private Dialog dialog;
+    private CheckBox isScumMaster;
 
-    public AsyncConnectSession(Context context, String name, String password) {
+    public AsyncConnectSession(Context context, String name, String password, CheckBox isScrumMaster) {
         this.context = context;
         this.sessionDao = new SessionDaoImpl();
         this.name = name;
         this.password = password;
+        this.isScumMaster = isScrumMaster;
 
     }
 
@@ -53,13 +60,26 @@ public class AsyncConnectSession extends AsyncTask<Integer, Integer, Void> {
     protected void onPostExecute(Void s) {
 
         if(session != null) {
-            Intent intent = new Intent(context, UserActivity.class);
-            intent.putExtra("sessionName", session.getSessionName());
-            intent.putExtra("sessionId", session.getId());
-            context.startActivity(intent);
+            if(isScumMaster.isChecked()) {
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra("sessionName", session.getSessionName());
+                intent.putExtra("sessionId", session.getId());
+                context.startActivity(intent);
+            } else {
+                Intent intent = new Intent(context, UserActivity.class);
+                intent.putExtra("sessionName", session.getSessionName());
+                intent.putExtra("sessionId", session.getId());
+                context.startActivity(intent);
+            }
+
         }
         else {
-            Toast.makeText(context, "Session with that data does not exist", Toast.LENGTH_SHORT).show();
+            dialog = new Dialog(context);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_no);
+            ((TextView)dialog.findViewById(R.id.txtDialogMessage)).setText("Session with that data does not exist");
+            dialog.show();
+            dialog.setCancelable(true);
         }
 
         progressDialog.dismiss();

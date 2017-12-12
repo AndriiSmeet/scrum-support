@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         btnConnectSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sessionService.connect(sessionName.getText().toString(), sessionPassword.getText().toString());
+                sessionService.connect(sessionName.getText().toString(), sessionPassword.getText().toString(), isScrumMaster);
             }
         });
     }

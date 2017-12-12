@@ -1,6 +1,7 @@
 package com.example.smeet.scrum_support.service.impl;
 
 import android.content.Context;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.async.session.AsyncConnectSession;
@@ -33,9 +34,9 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public Session connect(String name, String password) {
+    public Session connect(String name, String password, CheckBox isScrumMaster) {
         if(checkValidation(name, password)) {
-            AsyncConnectSession asyncConnectSession = new AsyncConnectSession(context, name, password);
+            AsyncConnectSession asyncConnectSession = new AsyncConnectSession(context, name, password, isScrumMaster);
             asyncConnectSession.execute();
         }
         return null;

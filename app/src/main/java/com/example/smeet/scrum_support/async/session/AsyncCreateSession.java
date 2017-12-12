@@ -1,8 +1,11 @@
 package com.example.smeet.scrum_support.async.session;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
@@ -21,6 +24,7 @@ public class AsyncCreateSession extends AsyncTask<Integer, Integer, Void> {
     private Session session;
     private ProgressDialog progressDialog;
     private Integer sessionId;
+    private Dialog dialog;
 
     public AsyncCreateSession(Context context, Session session) {
         this.context = context;
@@ -47,9 +51,16 @@ public class AsyncCreateSession extends AsyncTask<Integer, Integer, Void> {
     protected void onPostExecute(Void s) {
 
         if(sessionId == null) {
-            Toast.makeText(context, "Session with this name already exist", Toast.LENGTH_SHORT).show();
+            dialog = new Dialog(context);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_no);
+            ((TextView)dialog.findViewById(R.id.txtDialogMessage)).setText("Session with that name already exist");
+            dialog.show();
         } else {
-            Toast.makeText(context, "Session successfully created", Toast.LENGTH_SHORT).show();
+            dialog = new Dialog(context);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_ok);
+            dialog.show();
         }
         progressDialog.dismiss();
         super.onPostExecute(s);

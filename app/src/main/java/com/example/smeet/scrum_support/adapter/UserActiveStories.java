@@ -48,12 +48,12 @@ public class UserActiveStories extends BaseAdapter {
 
         View view = convertView;
         if (view == null) {
-            view = lInflater.inflate(R.layout.dialog_stories_item, parent, false);
+            view = lInflater.inflate(R.layout.element_story, parent, false);
         }
 
         Story story = getItem(position);
-        ((TextView) view.findViewById(R.id.textTitle)).setText(story.getTitle());
-        ((TextView) view.findViewById(R.id.describe)).setText(story.getDescribe());
+        ((TextView) view.findViewById(R.id.txtTitle)).setText(story.getTitle());
+        ((TextView) view.findViewById(R.id.txtDescription)).setText(story.getDescribe());
 
         return view;
     }

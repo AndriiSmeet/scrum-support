@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="220dp"
+    android:layout_height="330dp"
+    android:orientation="vertical"
+    android:background="@color/bgColorBtn"
+    >
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="22dp"
+        android:background="@color/bgDialog"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ok" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/rl"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="3dp"
+        android:gravity="center_horizontal">
+
+        <EditText
+
+            android:id="@+id/editTitle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editPassword"
+            android:layout_alignStart="@+id/editPassword"
+            android:layout_below="@+id/vieww"
+            android:drawablePadding="10dp"
+            android:hint="Title"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editDescription"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTitle"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:hint="Description"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnDialogCreate"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/bgDialog"
+            android:text="Create"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/btn"
+            android:background="@color/bgDialog"
+            android:text="Close"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+
+
+
+
+
