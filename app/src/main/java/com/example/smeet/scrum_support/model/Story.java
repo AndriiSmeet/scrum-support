@@ -17,8 +17,7 @@ public class Story {
 
     public Story(){}
 
-    public Story(Integer id, String title, Session session, String describe, Date saveDate, Boolean isActive) {
-        this.id = id;
+    public Story(String title, Session session, String describe, Date saveDate, Boolean isActive) {
         this.title = title;
         this.session = session;
         this.describe = describe;

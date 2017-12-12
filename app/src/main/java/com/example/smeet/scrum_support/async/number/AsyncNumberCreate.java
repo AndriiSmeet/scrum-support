@@ -9,17 +9,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
+import com.example.smeet.scrum_support.activity.UserActivity;
 import com.example.smeet.scrum_support.dao.NumberDao;
 import com.example.smeet.scrum_support.dao.impl.NumberDaoImpl;
 import com.example.smeet.scrum_support.model.Number;
-
-import java.util.List;
 
 /**
  * Created by Smeet on 09.12.2017.
  */
 
-public class AsyncNumberUpdate extends AsyncTask<Integer, Integer, Void> {
+public class AsyncNumberCreate extends AsyncTask<Integer, Integer, Void> {
 
     private Context context;
     private final NumberDao numberDao;
@@ -29,7 +28,7 @@ public class AsyncNumberUpdate extends AsyncTask<Integer, Integer, Void> {
     private Integer storyId;
 
 
-    public AsyncNumberUpdate(Context context, Integer value, Integer storyId) {
+    public AsyncNumberCreate(Context context, Integer value, Integer storyId) {
         this.context = context;
         this.value = value;
         this.storyId = storyId;
@@ -46,7 +45,7 @@ public class AsyncNumberUpdate extends AsyncTask<Integer, Integer, Void> {
 
     @Override
     protected Void doInBackground(Integer... integers) {
-        numberId = numberDao.update(value, storyId);
+        numberId = numberDao.create(value, storyId);
         return null;
 
     }
@@ -55,18 +54,18 @@ public class AsyncNumberUpdate extends AsyncTask<Integer, Integer, Void> {
     protected void onPostExecute(Void s) {
 
         if(numberId != null) {
-            Toast.makeText(context, "Your number was updated on " + value, Toast.LENGTH_SHORT).show();
-            System.out.println("Your number was updated on " + value);
+            System.out.println("Created numb with id" + numberId);
+            UserActivity.numId = numberId;
             Dialog dialog = new Dialog(context);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_selected_number);
             ((TextView)dialog.findViewById(R.id.txtSelectedNumber)).setText("" + value);
             dialog.show();
+
         }
 
         progressDialog.dismiss();
         super.onPostExecute(s);
     }
-
 
 }

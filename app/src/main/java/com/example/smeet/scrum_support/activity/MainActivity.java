@@ -46,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
     }
 
+    @Override
+    public void onBackPressed() {
+        UserActivity.storyId = null;
+        UserActivity.numId = null;
+        MasterMainFragment.sessionId = null;
+        MasterMainFragment.storyId = null;
+        super.onBackPressed();
+    }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
 

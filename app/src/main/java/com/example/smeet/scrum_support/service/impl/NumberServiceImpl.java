@@ -2,7 +2,9 @@ package com.example.smeet.scrum_support.service.impl;
 
 import android.content.Context;
 
+import com.example.smeet.scrum_support.async.number.AsyncNumberCreate;
 import com.example.smeet.scrum_support.async.number.AsyncNumberGetAll;
+import com.example.smeet.scrum_support.async.number.AsyncNumberUpdate;
 import com.example.smeet.scrum_support.dao.NumberDao;
 import com.example.smeet.scrum_support.dao.impl.NumberDaoImpl;
 import com.example.smeet.scrum_support.model.Number;
@@ -43,8 +45,15 @@ public class NumberServiceImpl implements NumberService {
     }
 
     @Override
-    public Integer update(Number number) {
-        return numberDao.update(number);
+    public Integer update(Integer value, Integer storyId) {
+        new AsyncNumberUpdate(context, value, storyId).execute();
+        return null;
+    }
+
+    @Override
+    public Integer create(Integer value, Integer storyId) {
+        new AsyncNumberCreate(context, value, storyId).execute();
+        return null;
     }
 
     public void showStats(List<Number> numbers, BarChart barChart) {

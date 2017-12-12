@@ -52,7 +52,7 @@ public class StoryDaoImpl implements StoryDao {
             ps.setString(2, story.getDescribe());
             ps.setBoolean(3, story.getActive());
             ps.setInt(4, story.getSession().getId());
-//            ps.setString(4, story.getSaveDate().toString());
+
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();

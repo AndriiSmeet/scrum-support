@@ -1,6 +1,5 @@
 package com.example.smeet.scrum_support.service;
 
-import com.example.smeet.scrum_support.model.Number;
 import com.github.mikephil.charting.charts.BarChart;
 
 /**
@@ -10,6 +9,7 @@ import com.github.mikephil.charting.charts.BarChart;
 public interface NumberService {
 
     void getAllNumberOnStory(Integer id, BarChart barChart);
-    Integer update(Number number);
+    Integer update(Integer value, Integer storyId);
+    Integer create(Integer value, Integer storyId);
 
 }
