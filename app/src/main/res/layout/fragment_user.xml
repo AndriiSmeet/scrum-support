@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:layout_marginLeft="14dp"
                 android:text="Select a number"/>
@@ -50,7 +51,7 @@
 
 
         <LinearLayout
-            android:layout_width="130dp"
+            android:layout_width="120dp"
             android:layout_height="75dp"
             android:orientation="vertical"
             android:layout_centerHorizontal="true">
@@ -60,7 +61,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="130dp"
+            android:layout_width="135dp"
             android:layout_height="75dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
@@ -73,7 +74,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/student"  />
+                android:background="@drawable/document"  />
 
 
             <TextView
@@ -81,8 +82,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="0"
-                android:textSize="30dp" />
+                android:text="No stoty"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="20dp" />
 
 
         </LinearLayout>
@@ -91,12 +94,11 @@
 
     <LinearLayout
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp">
+        android:layout_centerHorizontal="true">
 
 
         <LinearLayout
@@ -286,6 +288,8 @@
         android:id="@+id/btnSelectStory"
         android:layout_width="120dp"
         android:layout_height="50dp"
+        android:drawableLeft="@drawable/selection"
+        android:textStyle="bold"
         android:background="@color/bgColorBtn"
         android:textColor="@android:color/white"
         android:text="Select story"
