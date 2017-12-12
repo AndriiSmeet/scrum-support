@@ -1,10 +1,12 @@
 package com.example.smeet.scrum_support;
 
 import com.example.smeet.scrum_support.dao.impl.StoryDaoImpl;
+import com.example.smeet.scrum_support.model.Session;
 import com.example.smeet.scrum_support.model.Story;
 
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -33,5 +35,24 @@ public class ExampleUnitTest {
         Story stories = storyDao.getById(1);
         assertNotNull("Story not found", stories);
         System.out.println("Story id: " + stories.getId());
+    }
+
+    @Test
+    public void createStory() throws Exception {
+        Session session = new Session();
+        session.setId(1);
+        Integer stories = storyDao.create(new Story(1, "TitleWithDate", session, "Some description", new Date(), false));
+        assertNotNull("Story not found", stories);
+        System.out.println("Story id: " + stories);
+    }
+
+    @Test
+    public void getStories() throws Exception {
+        List<Story> stories = storyDao.getAllStoryByIdSession(1);
+        assertNotNull("Story not found", stories);
+        for (Story s:stories) {
+            System.out.println(s.getSaveDate().toString());
+        }
+        System.out.println("Story id: " + stories.size());
     }
 }
