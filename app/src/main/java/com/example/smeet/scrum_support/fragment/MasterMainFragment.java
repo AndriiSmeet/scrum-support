@@ -11,15 +11,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.smeet.scrum_support.session.TempSession;
 import com.example.smeet.scrum_support.R;
-import com.example.smeet.scrum_support.activity.MainActivity;
-import com.example.smeet.scrum_support.dao.SessionDao;
-import com.example.smeet.scrum_support.dao.StoryDao;
-import com.example.smeet.scrum_support.dao.impl.SessionDaoImpl;
-import com.example.smeet.scrum_support.dao.impl.StoryDaoImpl;
 import com.example.smeet.scrum_support.model.Story;
 import com.example.smeet.scrum_support.service.NumberService;
 import com.example.smeet.scrum_support.service.SessionService;
@@ -37,7 +32,6 @@ public class MasterMainFragment extends Fragment {
     private SessionService sessionService = new SessionServiceImpl(getContext());
     private StoryService storyService;
     private NumberService numberService;
-    private Dialog dialog;
 
     private BarChart barChart;
     public static Integer sessionId;
@@ -66,7 +60,6 @@ public class MasterMainFragment extends Fragment {
         initResource();
         doButtonLogic();
 
-
         if(storyId!= null) {
             numberService.getAllNumberOnStory(storyId, barChart);
         }
@@ -86,9 +79,10 @@ public class MasterMainFragment extends Fragment {
         barChart.getAxisLeft().setDrawAxisLine(false);
         barChart.getAxisRight().setDrawGridLines(false);
         barChart.setDescription(null);
-        barChart.animateY(4000);
+        barChart.animateY(3000);
 
         numberService = new NumberServiceImpl(getContext());
+        TempSession.setSessionId(getActivity().getIntent().getExtras().getInt("sessionId"));
         sessionId = getActivity().getIntent().getExtras().getInt("sessionId");
 
     }
@@ -105,6 +99,7 @@ public class MasterMainFragment extends Fragment {
 
                 btnDialogCreateStory = dialog.findViewById(R.id.btnDialogCreate);
 
+
                 final SessionService sessionService = new SessionServiceImpl(getContext());
                 final StoryService storyService = new StoryServiceImpl(getContext());
 
@@ -114,7 +109,6 @@ public class MasterMainFragment extends Fragment {
 
                         String dialogTitle = ((EditText)dialog.findViewById(R.id.editDialogTitle)).getText().toString();
                         String dialogDesc =((EditText)dialog.findViewById(R.id.editDialogDescription)).getText().toString();
-
 
                         storyService.create(new Story(dialogTitle, sessionService.getById(sessionId), dialogDesc, new Date(), true));
                         dialog.dismiss();
@@ -151,6 +145,11 @@ public class MasterMainFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public void setSessionTitle(Story story) {
+        ((TextView)getActivity().findViewById(R.id.txtStoryTitle)).setText(story.getTitle());
+
     }
 
 

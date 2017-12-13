@@ -39,6 +39,7 @@ public class AsyncGetAllStoryByIsActive extends AsyncTask<Integer, Integer, Void
     @Override
     protected void onPreExecute() {
         progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_bar);
     }

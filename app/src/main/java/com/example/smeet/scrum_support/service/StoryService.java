@@ -16,6 +16,6 @@ public interface StoryService {
     List<Story> getAll();
     List<Story> getAllStoryByIdSession(Integer idSession, ListView listView);
     List<Story> getAllStoryByIsActive(boolean arg, Integer sessionId);
-    void showStorieBySession(List<Story> stories);
+    void showStoriesBySession(List<Story> stories);
     void showDialogWithActiveStories(List<Story> stories);
 }
