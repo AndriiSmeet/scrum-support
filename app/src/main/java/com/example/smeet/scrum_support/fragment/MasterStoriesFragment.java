@@ -37,7 +37,7 @@ public class MasterStoriesFragment extends Fragment  {
 
         listView = getActivity().findViewById(R.id.listStory);
         storyService = new StoryServiceImpl(getContext());
-        storyService.getAllStoryByIdSession(1, listView);
+        storyService.getAllStoryByIdSession(getActivity().getIntent().getExtras().getInt("sessionId"), listView);
 
 
 
