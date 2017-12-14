@@ -89,23 +89,173 @@ public class UserActivity extends AppCompatActivity {
         btnNum1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(storyId != null) {
+                if(check()) {
                     if(numId != null) {
                         numberService.update(Integer.parseInt(btnNum1.getText().toString()), numId);
                     }else {
                         numberService.create(Integer.parseInt(btnNum1.getText().toString()), storyId);
                     }
-
-                } else {
-                    Dialog dialog = new Dialog(UserActivity.this);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setContentView(R.layout.dialog_no);
-                    ((TextView)dialog.findViewById(R.id.txtDialogMessage)).setText("You need select story");
-                    dialog.show();
                 }
 
             }
         });
+
+        btnNum2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum2.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum2.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum3.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum3.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum5.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum5.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum8.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum8.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum13.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum13.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum21.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum21.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum21.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum34.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum34.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum34.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum55.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum55.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum55.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum84.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum84.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum84.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum139.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum139.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum139.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+
+        btnNum223.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check()) {
+                    if(numId != null) {
+                        numberService.update(Integer.parseInt(btnNum223.getText().toString()), numId);
+                    }else {
+                        numberService.create(Integer.parseInt(btnNum223.getText().toString()), storyId);
+                    }
+                }
+            }
+        });
+    }
+
+    private boolean check() {
+        if(storyId != null) {
+            return true;
+
+        } else {
+            Dialog dialog = new Dialog(UserActivity.this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_no);
+            ((TextView)dialog.findViewById(R.id.txtDialogMessage)).setText("You need select story");
+            dialog.show();
+            return false;
+        }
     }
 
     @Override

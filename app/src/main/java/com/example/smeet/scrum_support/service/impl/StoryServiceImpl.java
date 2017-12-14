@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
+import com.example.smeet.scrum_support.activity.UserActivity;
 import com.example.smeet.scrum_support.adapter.AdapterStoriesBySession;
 import com.example.smeet.scrum_support.adapter.UserActiveStories;
 import com.example.smeet.scrum_support.async.story.AsyncCreateStory;
@@ -68,7 +70,7 @@ public class StoryServiceImpl implements StoryService {
     }
 
     @Override
-    public void showStorieBySession(List<Story> stories){
+    public void showStoriesBySession(List<Story> stories){
 
         AdapterStoriesBySession adapter = new AdapterStoriesBySession(context, new ArrayList<Story>(stories), R.id.listStory);
         ListView lv = adapter.getListView();
@@ -88,7 +90,10 @@ public class StoryServiceImpl implements StoryService {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Story story = stories.get(i);
-                getById(story.getId());
+                System.out.println(story.getId());
+                MasterMainFragment.storyId = story.getId();
+                UserActivity.storyId = story.getId();
+                Toast.makeText(context, "Story with id: " + story.getId() + " selected", Toast.LENGTH_SHORT).show();
 
             }
         });

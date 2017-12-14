@@ -39,6 +39,7 @@ public class AsyncNumberCreate extends AsyncTask<Integer, Integer, Void> {
     @Override
     protected void onPreExecute() {
         progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_bar);
     }
@@ -56,6 +57,7 @@ public class AsyncNumberCreate extends AsyncTask<Integer, Integer, Void> {
         if(numberId != null) {
             System.out.println("Created numb with id" + numberId);
             UserActivity.numId = numberId;
+
             Dialog dialog = new Dialog(context);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_selected_number);
