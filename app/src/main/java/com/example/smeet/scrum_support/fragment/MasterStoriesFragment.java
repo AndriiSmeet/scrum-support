@@ -40,9 +40,5 @@ public class MasterStoriesFragment extends Fragment  {
         storyService.getAllStoryByIdSession(getActivity().getIntent().getExtras().getInt("sessionId"), listView);
 
 
-
-        //Фрагмент должен содержать всю листу историй в данной сесии,
-        //Нужно вальнуть адаптер и сделать вывод листы на фрагмент, юзай обычный ViewList
-        //Копата что то на фронте делал, елемент для листы - element_story
     }
 }

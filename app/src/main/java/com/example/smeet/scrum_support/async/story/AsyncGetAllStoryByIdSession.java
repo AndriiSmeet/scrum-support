@@ -62,7 +62,7 @@ public class AsyncGetAllStoryByIdSession extends AsyncTask<Integer, Integer, Voi
             AdapterStoriesBySession adapter = new AdapterStoriesBySession(context, new ArrayList<Story>(stories), R.id.listStory);
             listView.setAdapter(adapter);
 
-//            storyService.showDialogWithActiveStories(stories);
+            storyService.setStoryList(new ArrayList<Story>(stories), listView);
 //            Toast.makeText(context, "Stories with Session " + idSession + " lenght: " + stories.size(), Toast.LENGTH_SHORT).show();
         }
 

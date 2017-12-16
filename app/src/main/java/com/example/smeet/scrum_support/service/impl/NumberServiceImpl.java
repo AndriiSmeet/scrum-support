@@ -58,6 +58,7 @@ public class NumberServiceImpl implements NumberService {
 
     public void showStats(List<Number> numbers, BarChart barChart) {
 
+        System.out.println("in show stats");
         List<Integer> numbersInt = new ArrayList<>();
         Collections.sort(numbersInt);
         HashMap<Integer, Integer> numberAndCount = new HashMap<>();
