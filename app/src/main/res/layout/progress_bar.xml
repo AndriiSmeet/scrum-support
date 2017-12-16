@@ -3,28 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="150dp"
     android:gravity="center"
-    android:background="@android:color/white"
-    android:alpha="0.8"
     android:layout_gravity="center"
     android:orientation="horizontal"
     android:layout_height="80dp">
 
     <ProgressBar
         android:layout_gravity="center"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
-
-    <TextView
-        android:id="@+id/progressMessage"
-        android:paddingLeft="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_gravity="center"
-        android:textSize="17dp"
-        android:text="Connection"
-        />
-
-
+        android:layout_width="70dp"
+        android:indeterminateDrawable="@drawable/animated_bar"
+        android:indeterminateOnly="true"
+        android:layout_height="70dp" />
 
 </LinearLayout>
