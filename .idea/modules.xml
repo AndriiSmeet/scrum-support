@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/scrum-support.iml" filepath="$PROJECT_DIR$/scrum-support.iml" />
       <module fileurl="file://C:\androidProj\scrumsupport\.idea\scrum-support.iml" filepath="C:\androidProj\scrumsupport\.idea\scrum-support.iml" />
       <module fileurl="file://C:\androidProj\scrumsupport\scrum-support.iml" filepath="C:\androidProj\scrumsupport\scrum-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scrumsupport.iml" filepath="$PROJECT_DIR$/scrumsupport.iml" />
       <module fileurl="file://C:\Users\Vlad\Desktop\ProgramAndroid\scrum-support\scrumsupport.iml" filepath="C:\Users\Vlad\Desktop\ProgramAndroid\scrum-support\scrumsupport.iml" />
     </modules>
   </component>
