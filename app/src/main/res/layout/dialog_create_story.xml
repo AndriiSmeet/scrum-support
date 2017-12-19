@@ -41,15 +41,15 @@
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
             android:hint="Title"
-            android:textColorHint="@android:color/black"
-            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editDialogDescription"
             android:layout_width="150dp"
-            android:textColorHint="@android:color/black"
-            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:drawablePadding="10dp"

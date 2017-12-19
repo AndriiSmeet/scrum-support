@@ -10,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.smeet.scrum_support.fragment.MasterMainFragment;
@@ -44,11 +47,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(new MasterMainFragment(), "MAIN");
         pagerAdapter.addFragment(new MasterStoriesFragment(), "STORIES");
         viewPager.setAdapter(pagerAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.refresh, menu);
+        MenuItem refreshItem = menu.findItem(R.id.action_refresh);
+        refreshItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(getApplicationContext(),"wfsfsds", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
+        return true;
     }
 
     @Override
