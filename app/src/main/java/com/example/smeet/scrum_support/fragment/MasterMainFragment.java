@@ -71,7 +71,6 @@ public class MasterMainFragment extends Fragment {
 
     private void initResource() {
         btnCreateStory = getActivity().findViewById(R.id.btnCreateStory);
-        btnSaveStory = getActivity().findViewById(R.id.btnSaveStory);
         barChart = getActivity().findViewById(R.id.barchart);
         btnSelectStory = getActivity().findViewById(R.id.btnSelectStory);
         btnRefresh = getActivity().findViewById(R.id.btnRefresh);

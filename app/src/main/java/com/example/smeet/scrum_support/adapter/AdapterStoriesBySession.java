@@ -65,10 +65,6 @@ public class AdapterStoriesBySession extends BaseAdapter{
         TextView tvDescr = v.findViewById(R.id.txtDescription);
         tvDescr.setText(story.getDescribe());
 
-        TextView textStoryStatus = v.findViewById(R.id.textStoryStatus);
-        System.out.println("6");
-        textStoryStatus.setText(story.getActive() ? "open" : "close");
-
         lv = v.findViewById(idListView);
 
         return v;
