@@ -3,6 +3,7 @@ package com.example.smeet.scrum_support.dao.impl;
 import com.example.smeet.scrum_support.config.Connect;
 import com.example.smeet.scrum_support.dao.SessionDao;
 import com.example.smeet.scrum_support.dao.StoryDao;
+import com.example.smeet.scrum_support.dao.impl.sql.NumberSql;
 import com.example.smeet.scrum_support.dao.impl.sql.StorySql;
 import com.example.smeet.scrum_support.model.Story;
 
@@ -67,7 +68,18 @@ public class StoryDaoImpl implements StoryDao {
 
     @Override
     public Integer delete(Integer id) {
-        //TODO write method delete Story
+        try {
+            PreparedStatement ps = Connect.getConnection().prepareStatement(StorySql.DELETE_STORY_BY_STORY_ID, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

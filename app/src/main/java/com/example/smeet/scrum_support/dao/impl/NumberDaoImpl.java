@@ -57,8 +57,22 @@ public class NumberDaoImpl implements NumberDao {
 
     @Override
     public Integer delete(Integer id) {
+        try {
+            PreparedStatement ps = Connect.getConnection().prepareStatement(NumberSql.DELETE_NUMBER_BY_STORY_ID, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
+
+
 
     @Override
     public List<Number> getAllNumberOnStory(Integer id) {

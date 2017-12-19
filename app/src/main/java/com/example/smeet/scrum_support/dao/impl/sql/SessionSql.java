@@ -33,6 +33,4 @@ public final class SessionSql {
             "FROM session " +
             "WHERE session_name = ? " +
             "AND password = ?;";
-
-//    public static final String
 }

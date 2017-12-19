@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -49,7 +52,7 @@ public class MasterMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_master, container, false);
     }
 
@@ -82,8 +85,11 @@ public class MasterMainFragment extends Fragment {
         barChart.animateY(3000);
 
         numberService = new NumberServiceImpl(getContext());
-        TempSession.setSessionId(getActivity().getIntent().getExtras().getInt("sessionId"));
-        sessionId = getActivity().getIntent().getExtras().getInt("sessionId");
+
+        if(sessionId == null) {
+            sessionId = getActivity().getIntent().getExtras().getInt("sessionId");
+        }
+
 
     }
 
@@ -147,9 +153,23 @@ public class MasterMainFragment extends Fragment {
         });
     }
 
-    public void setSessionTitle(Story story) {
-        ((TextView)getActivity().findViewById(R.id.txtStoryTitle)).setText(story.getTitle());
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.refresh, menu);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_refresh) {
+            System.out.println("refresh on " + storyId);
+            if(storyId!= null) {
+                numberService.getAllNumberOnStory(storyId, barChart);
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

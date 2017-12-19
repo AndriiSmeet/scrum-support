@@ -56,21 +56,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.refresh, menu);
-        MenuItem refreshItem = menu.findItem(R.id.action_refresh);
-        refreshItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(getApplicationContext(),"wfsfsds", Toast.LENGTH_LONG).show();
-                return false;
-            }
-        });
-        return true;
-    }
-
-    @Override
     public void onBackPressed() {
         UserActivity.storyId = null;
         UserActivity.numId = null;

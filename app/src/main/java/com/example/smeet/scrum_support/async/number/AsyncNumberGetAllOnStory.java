@@ -53,7 +53,7 @@ public class AsyncNumberGetAllOnStory extends AsyncTask<Integer, Integer, Void> 
 
     @Override
     protected void onPostExecute(Void s) {
-        storyService.showDialogWithStatsByStory(numbers);
+        storyService.showDialogWithStatsByStory(numbers, storyId);
         progressDialog.dismiss();
         super.onPostExecute(s);
     }

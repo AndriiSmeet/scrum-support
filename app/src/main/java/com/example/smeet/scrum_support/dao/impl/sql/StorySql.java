@@ -26,5 +26,7 @@ public class StorySql {
             "WHERE is_active = ? " +
             "AND session_id_fk = ?;";
 
+    public final static String DELETE_STORY_BY_STORY_ID = "DELETE FROM story WHERE id = ?";
+
 
 }

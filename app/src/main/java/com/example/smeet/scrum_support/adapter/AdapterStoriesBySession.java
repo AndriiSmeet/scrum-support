@@ -19,11 +19,11 @@ import java.util.List;
 
 public class AdapterStoriesBySession extends BaseAdapter{
 
-    Context ctx;
-    List<Story> stories;
-    LayoutInflater inflater;
-    ListView lv;
-    Integer idListView;
+    private Context ctx;
+    private List<Story> stories;
+    private LayoutInflater inflater;
+    private ListView lv;
+    private Integer idListView;
 
     public AdapterStoriesBySession(Context ctx, List<Story> stories, Integer id) {
         this.ctx = ctx;
@@ -72,8 +72,6 @@ public class AdapterStoriesBySession extends BaseAdapter{
         lv = v.findViewById(idListView);
 
         return v;
-
-
 
     }
 

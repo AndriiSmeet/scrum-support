@@ -21,4 +21,7 @@ public final class NumberSql {
     public final static String UPDATE_NUMBER_QUERY = "UPDATE number " +
             "SET value = ? " +
             "WHERE id = ?;";
+
+    public final static String DELETE_NUMBER_BY_STORY_ID = "DELETE FROM number where story_id_fk = ?";
+
 }

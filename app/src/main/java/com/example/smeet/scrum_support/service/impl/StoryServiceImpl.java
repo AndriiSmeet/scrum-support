@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.smeet.scrum_support.async.number.AsyncNumberGetAllOnStory;
+import com.example.smeet.scrum_support.async.story.AsyncDeleteStory;
 import com.example.smeet.scrum_support.model.Number;
 import android.widget.Toast;
 
@@ -108,11 +109,19 @@ public class StoryServiceImpl implements StoryService {
         });
     }
 
-    public void showDialogWithStatsByStory(List<Number> numbers) {
+    public void showDialogWithStatsByStory(List<Number> numbers, final Integer storyId) {
 
-        Dialog dialog = new Dialog(context);
+        final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_statistic);
+
+        dialog.findViewById(R.id.deleteStatistics).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AsyncDeleteStory(context, storyId).execute();
+                dialog.dismiss();
+            }
+        });
 
 
         List<Integer> numbersInt = new ArrayList<>();
