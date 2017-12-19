@@ -134,13 +134,6 @@ public class MasterMainFragment extends Fragment {
 
 
 
-        btnSaveStory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("in fragment " + storyId);
-            }
-        });
-
         btnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
