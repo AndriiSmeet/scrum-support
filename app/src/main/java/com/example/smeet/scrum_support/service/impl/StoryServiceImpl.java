@@ -78,8 +78,15 @@ public class StoryServiceImpl implements StoryService {
     }
 
     @Override
-    public List<Story> getAllStoryByIsActive(boolean arg, Integer sessionId) {
-        AsyncGetAllStoryByIsActive asyncTask = new AsyncGetAllStoryByIsActive(context, arg, sessionId);
+    public List<Story> getAllStoryByIsActive(boolean arg, Integer sessionId, UserActivity userActivity) {
+        AsyncGetAllStoryByIsActive asyncTask = new AsyncGetAllStoryByIsActive(context, arg, sessionId, userActivity);
+        asyncTask.execute();
+        return null;
+    }
+
+    @Override
+    public List<Story> getAllStoryByIsActive(boolean arg, Integer sessionId, MasterMainFragment masterMainFragment) {
+        AsyncGetAllStoryByIsActive asyncTask = new AsyncGetAllStoryByIsActive(context, arg, sessionId, masterMainFragment);
         asyncTask.execute();
         return null;
     }
@@ -171,7 +178,7 @@ public class StoryServiceImpl implements StoryService {
     }
 
     @Override
-    public void showDialogWithActiveStories(final List<Story> stories) {
+    public void showDialogWithActiveStories(final List<Story> stories, final UserActivity userActivity) {
 
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -186,7 +193,34 @@ public class StoryServiceImpl implements StoryService {
                 MasterMainFragment.storyId = story.getId();
                 UserActivity.storyId = story.getId();
                 Toast.makeText(context, "Story with id: " + story.getId() + " selected", Toast.LENGTH_SHORT).show();
+                userActivity.setStoryTitle(story.getTitle());
 
+            }
+        });
+
+        UserActiveStories adapter = new UserActiveStories(context, new ArrayList<Story>(stories));
+        lv.setAdapter(adapter);
+
+        dialog.show();
+    }
+
+    @Override
+    public void showDialogWithActiveStories(final List<Story> stories, final MasterMainFragment masterMainFragment) {
+
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_stories_list);
+
+        ListView lv = dialog.findViewById(R.id.lv);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Story story = stories.get(i);
+                System.out.println(story.getId());
+                MasterMainFragment.storyId = story.getId();
+                UserActivity.storyId = story.getId();
+                Toast.makeText(context, "Story with id: " + story.getId() + " selected", Toast.LENGTH_SHORT).show();
+                masterMainFragment.setTextStoryTitle(story.getTitle());
             }
         });
 

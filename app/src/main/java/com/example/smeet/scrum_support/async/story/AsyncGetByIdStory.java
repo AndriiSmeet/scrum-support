@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
+import com.example.smeet.scrum_support.activity.UserActivity;
 import com.example.smeet.scrum_support.dao.StoryDao;
 import com.example.smeet.scrum_support.dao.impl.StoryDaoImpl;
 import com.example.smeet.scrum_support.model.Story;
@@ -15,11 +16,14 @@ import com.example.smeet.scrum_support.model.Story;
  */
 
 public class AsyncGetByIdStory extends AsyncTask<Integer, Integer, Void> {
-    Integer id;
-    Context context;
-    Story story;
-    StoryDao storyDao;
-    ProgressDialog progressDialog;
+
+    private Integer id;
+    private Context context;
+    private Story story;
+    private StoryDao storyDao;
+    private ProgressDialog progressDialog;
+
+
 
     public AsyncGetByIdStory(Integer id, Context context) {
         this.id = id;

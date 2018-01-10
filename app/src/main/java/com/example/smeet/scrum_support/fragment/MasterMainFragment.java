@@ -44,6 +44,7 @@ public class MasterMainFragment extends Fragment {
     private Button btnDialogCreateStory;
     private Button btnSelectStory;
     private Button btnRefresh;
+    private TextView textStoryTitle;
 
 
     public MasterMainFragment() {}
@@ -74,6 +75,8 @@ public class MasterMainFragment extends Fragment {
         barChart = getActivity().findViewById(R.id.barchart);
         btnSelectStory = getActivity().findViewById(R.id.btnSelectStory);
         btnRefresh = getActivity().findViewById(R.id.btnRefresh);
+        textStoryTitle = getActivity().findViewById(R.id.txtStoryTitle);
+
 
         barChart.getAxisLeft().setDrawGridLines(false);
         barChart.setDrawGridBackground(false);
@@ -91,7 +94,9 @@ public class MasterMainFragment extends Fragment {
 
 
     }
-
+public void setTextStoryTitle(String storyTitle){
+        textStoryTitle.setText(storyTitle);
+}
     private void doButtonLogic() {
         btnCreateStory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +133,7 @@ public class MasterMainFragment extends Fragment {
             final StoryService storyService = new StoryServiceImpl(getContext());
             @Override
             public void onClick(View view) {
-                storyService.getAllStoryByIsActive(true, sessionId);
+                storyService.getAllStoryByIsActive(true, sessionId, MasterMainFragment.this);
             }
         });
 

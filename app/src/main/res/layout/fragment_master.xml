@@ -33,11 +33,11 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center"
                         android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src = "@drawable/document"/>
+                        android:layout_height="31dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/document" />
 
                     <TextView
                         android:id="@+id/txtStoryTitle"
@@ -71,7 +71,7 @@
 
 
                     <TextView
-                        android:id="@+id/textStats"
+                        android:id="@+id/textPeople"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -229,12 +229,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:textColor="@android:color/black"
                     android:fontFamily="@font/fonts"
                     android:paddingRight="5dp"
-                    android:textStyle="bold"
-                    android:text="Statistics"/>
+                    android:text="Statistics"
+                    android:textColor="@android:color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="35dp"

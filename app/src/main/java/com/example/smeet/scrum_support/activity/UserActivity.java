@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.smeet.scrum_support.R;
 import com.example.smeet.scrum_support.fragment.MasterMainFragment;
+import com.example.smeet.scrum_support.model.Story;
 import com.example.smeet.scrum_support.service.NumberService;
 import com.example.smeet.scrum_support.service.StoryService;
 import com.example.smeet.scrum_support.service.impl.NumberServiceImpl;
@@ -34,6 +35,9 @@ public class UserActivity extends AppCompatActivity {
     private Button btnNum84;
     private Button btnNum139;
     private Button btnNum223;
+
+    public TextView textTitleStory;
+    public TextView textDescribeStory;
 
     private Integer sessionId;
     public static Integer numId;
@@ -73,6 +77,8 @@ public class UserActivity extends AppCompatActivity {
         btnNum139 = (Button) findViewById(R.id.num139);
         btnNum223 = (Button) findViewById(R.id.num223);
 
+        textTitleStory = (TextView) findViewById(R.id.textStory);
+
     }
 
     private void buttonLogic() {
@@ -80,7 +86,7 @@ public class UserActivity extends AppCompatActivity {
         btnSelectStory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                storyService.getAllStoryByIsActive(true, sessionId);
+                storyService.getAllStoryByIsActive(true, sessionId, UserActivity.this);
                 System.out.println(storyId);
             }
         });
@@ -242,6 +248,10 @@ public class UserActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void setStoryTitle (String storyTitle){
+        textTitleStory.setText(storyTitle);
     }
 
     private boolean check() {

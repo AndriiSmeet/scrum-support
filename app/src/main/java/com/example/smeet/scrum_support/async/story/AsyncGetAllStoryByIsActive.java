@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.smeet.scrum_support.R;
+import com.example.smeet.scrum_support.activity.UserActivity;
 import com.example.smeet.scrum_support.dao.StoryDao;
 import com.example.smeet.scrum_support.dao.impl.StoryDaoImpl;
+import com.example.smeet.scrum_support.fragment.MasterMainFragment;
 import com.example.smeet.scrum_support.model.Story;
 import com.example.smeet.scrum_support.service.StoryService;
 import com.example.smeet.scrum_support.service.impl.StoryServiceImpl;
@@ -27,9 +29,21 @@ public class AsyncGetAllStoryByIsActive extends AsyncTask<Integer, Integer, Void
     private Integer sessionId;
     private StoryServiceImpl storyService;
     private ProgressDialog progressDialog;
+    private UserActivity userActivity;
+    private MasterMainFragment masterMainFragment;
 
-    public AsyncGetAllStoryByIsActive(Context context, Boolean isActive, Integer sessionId) {
+    public AsyncGetAllStoryByIsActive(Context context, Boolean isActive, Integer sessionId, UserActivity userActivity) {
         this.context = context;
+        this.userActivity = userActivity;
+        this.isActive = isActive;
+        storyDao = new StoryDaoImpl();
+        this.sessionId = sessionId;
+        storyService = new StoryServiceImpl(context);
+    }
+
+    public AsyncGetAllStoryByIsActive(Context context, Boolean isActive, Integer sessionId, MasterMainFragment masterMainFragment ) {
+        this.context = context;
+        this.masterMainFragment = masterMainFragment;
         this.isActive = isActive;
         storyDao = new StoryDaoImpl();
         this.sessionId = sessionId;
@@ -56,8 +70,12 @@ public class AsyncGetAllStoryByIsActive extends AsyncTask<Integer, Integer, Void
             Toast.makeText(context, "Stories are null", Toast.LENGTH_SHORT).show();
         } else {
             if(isActive == true){
-                storyService.showDialogWithActiveStories(stories);
-
+                if (userActivity != null){
+                    storyService.showDialogWithActiveStories(stories, userActivity);
+                }
+                if (masterMainFragment != null){
+                    storyService.showDialogWithActiveStories(stories, masterMainFragment);
+                }
             } else {
                 Toast.makeText(context, "Are not active stories lenght: " + stories.size(), Toast.LENGTH_SHORT).show();
             }
