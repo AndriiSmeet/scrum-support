@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.smeet.scrum_support.async.number.AsyncNumberGetAllOnStory;
@@ -118,15 +119,39 @@ public class StoryServiceImpl implements StoryService {
 
     public void showDialogWithStatsByStory(List<Number> numbers, final Integer storyId) {
 
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_statistic);
+        final Dialog dialogWrap = new Dialog(context);
+        dialogWrap.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogWrap.setContentView(R.layout.dialog_statistic);
 
-        dialog.findViewById(R.id.deleteStatistics).setOnClickListener(new View.OnClickListener() {
+        dialogWrap.findViewById(R.id.deleteStatistics).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AsyncDeleteStory(context, storyId).execute();
-                dialog.dismiss();
+                final Dialog dialog = new Dialog(context);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_attention);
+                dialog.show();
+
+               final Button btnYes;
+               final Button btnNo;
+
+               btnYes = dialog.findViewById(R.id.btnOk);
+               btnNo = dialog.findViewById(R.id.btnNo);
+
+               btnYes.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       new AsyncDeleteStory(context, storyId).execute();
+                       dialogWrap.dismiss();
+                       dialog.dismiss();
+                   }
+               });
+
+               btnNo.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       dialog.dismiss();
+                   }
+               });
             }
         });
 
@@ -136,7 +161,7 @@ public class StoryServiceImpl implements StoryService {
         HashMap<Integer, Integer> numberAndCount = new HashMap<>();
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-        PieChart pieChart = dialog.findViewById(R.id.pieChart);
+        PieChart pieChart = dialogWrap.findViewById(R.id.pieChart);
         pieChart.animateXY(3000, 3000);
         pieChart.setUsePercentValues(true);
         pieChart.setHoleRadius(30);
@@ -174,7 +199,7 @@ public class StoryServiceImpl implements StoryService {
         PieData pieData = new PieData(dataSet);
         pieData.setDrawValues(false);
         pieChart.setData(pieData);
-        dialog.show();
+        dialogWrap.show();
     }
 
     @Override

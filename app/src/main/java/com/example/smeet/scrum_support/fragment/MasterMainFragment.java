@@ -41,6 +41,7 @@ public class MasterMainFragment extends Fragment {
     public static Integer storyId;
     private Button btnCreateStory;
     private Button btnSaveStory;
+    private Button btnCloseStory;
     private Button btnDialogCreateStory;
     private Button btnSelectStory;
     private Button btnRefresh;
@@ -108,6 +109,7 @@ public void setTextStoryTitle(String storyTitle){
                 dialog.show();
 
                 btnDialogCreateStory = dialog.findViewById(R.id.btnDialogCreate);
+                btnCloseStory = dialog.findViewById(R.id.btnDialogClose);
 
 
                 final SessionService sessionService = new SessionServiceImpl(getContext());
@@ -126,6 +128,12 @@ public void setTextStoryTitle(String storyTitle){
 
                 });
 
+                btnCloseStory.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
 
